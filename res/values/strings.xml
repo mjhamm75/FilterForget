@@ -6,5 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="order_filter">Order Filter</string>
     <string name="add_filter">Add Filter</string>
+    <string name="delete_filter">Delete Filter</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
