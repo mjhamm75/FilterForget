@@ -1,15 +1,54 @@
 package com.app.filterforget;
 
-import android.app.Activity;
-import android.os.Bundle;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class FilterActivity extends Activity {
+import android.app.ListActivity;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
+
+public class FilterActivity extends ListActivity {
+	final Context context = this;
+	static List<Filter> filters = new ArrayList<Filter>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_filter);
+
+		ListView filterActivityView = getListView();
+		createFilters();
+
+		Button addFilter = (Button) findViewById(R.id.addFilter);
+		addFilter.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				System.out.println("Add");
+			}
+		});
+
+		Button orderFilter = (Button) findViewById(R.id.orderFilter);
+		orderFilter.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				System.out.println("Order");
+			}
+		});
+
 	}
-	
+
+	private void createFilters() {
+		Date today = new Date();
+		filters.add(new Filter("Hall", "1", "1", "1", today));
+		filters.add(new Filter("Dining Room", "2", "2", "2", today));
+		filters.add(new Filter("Kitchen", "3", "3", "3", today));
+		filters.add(new Filter("Foyer", "4", "4", "4", today));
+	}
+
 }
