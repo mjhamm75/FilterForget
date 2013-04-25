@@ -14,6 +14,7 @@ import android.widget.ListView;
 public class FilterActivity extends ListActivity {
 	final Context context = this;
 	static List<Filter> filters = new ArrayList<Filter>();
+	private FilterAdapter filterAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,9 @@ public class FilterActivity extends ListActivity {
 				System.out.println("Order");
 			}
 		});
+
+		filterAdapter = new FilterAdapter(context, R.layout.row_activity_filter, filters);
+		setListAdapter(filterAdapter);
 
 	}
 
