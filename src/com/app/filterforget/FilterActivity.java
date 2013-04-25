@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -22,6 +25,37 @@ public class FilterActivity extends ListActivity {
 		setContentView(R.layout.activity_filter);
 
 		ListView filterActivityView = getListView();
+
+		filterActivityView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				final int filterPosition = position;
+				final Dialog dialog = new Dialog(FilterActivity.this);
+				dialog.setContentView(R.layout.filter_single);
+				dialog.setTitle(R.string.delete_filter);
+
+				Button singleDelete = (Button) dialog.findViewById(R.id.buttonFilterSingleDelete);
+				singleDelete.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						filters.remove(filterPosition);
+						filterAdapter.notifyDataSetChanged();
+						dialog.dismiss();
+					}
+				});
+
+				Button cancel = (Button) dialog.findViewById(R.id.buttonFilterSingleCancel);
+				cancel.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+					}
+				});
+				
+				dialog.show();
+			}
+		});
+
 		createFilters();
 
 		Button addFilter = (Button) findViewById(R.id.addFilter);
