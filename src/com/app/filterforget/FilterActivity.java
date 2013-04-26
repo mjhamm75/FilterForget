@@ -9,6 +9,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class FilterActivity extends ListActivity {
 	final Context context = this;
 	static List<Filter> filters = new ArrayList<Filter>();
 	private FilterAdapter filterAdapter;
+	private FilterOrderAdapter orderAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class FilterActivity extends ListActivity {
 						dialog.dismiss();
 					}
 				});
-				
+
 				dialog.show();
 			}
 		});
@@ -72,7 +74,14 @@ public class FilterActivity extends ListActivity {
 
 			@Override
 			public void onClick(View v) {
-				System.out.println("Order");
+				final Dialog dialog = new Dialog(FilterActivity.this);
+				dialog.setContentView(R.layout.dialog_order_filters);
+				dialog.setTitle(R.string.order_filter);
+				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+				final ListView orderFilters = (ListView) dialog.findViewById(R.id.list_view_order_filter);
+				orderAdapter = new FilterOrderAdapter(context, R.layout.row_filter_order, filters);
+				orderFilters.setAdapter(orderAdapter);
+				dialog.show();
 			}
 		});
 
