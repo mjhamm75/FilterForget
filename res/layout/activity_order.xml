@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#000000"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/android:list"
+        android:id="@+id/list_view_order_filter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1" >
+    </ListView>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -18,20 +17,20 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/selectFilters"
-            android:layout_width="match_parent"
+            android:id="@+id/orderFilters"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="@string/order_filter" />
+            android:text="@string/continuation" >
+        </Button>
 
         <Button
-            android:id="@+id/addFilter"
-            android:layout_width="match_parent"
+            android:id="@+id/orderFiltersCancel"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:text="@string/add_filter" />
+            android:text="@string/cancel" >
+        </Button>
     </LinearLayout>
 
 </LinearLayout>

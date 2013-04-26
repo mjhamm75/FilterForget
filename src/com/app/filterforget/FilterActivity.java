@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -102,25 +103,23 @@ public class FilterActivity extends ListActivity {
 			}
 		});
 
-		Button orderFilter = (Button) findViewById(R.id.orderFilter);
-		orderFilter.setOnClickListener(new View.OnClickListener() {
+		Button selectFilters = (Button) findViewById(R.id.selectFilters);
+		selectFilters.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				final Dialog dialog = new Dialog(FilterActivity.this);
-				dialog.setContentView(R.layout.dialog_order_filters);
-				dialog.setTitle(R.string.order_filter);
-				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-				final ListView orderFilters = (ListView) dialog.findViewById(R.id.list_view_order_filter);
-				orderAdapter = new FilterOrderAdapter(context, R.layout.row_filter_order, filters);
-				orderFilters.setAdapter(orderAdapter);
-				dialog.show();
+				Intent orderIntent = new Intent(FilterActivity.this, OrderActivity.class);
+				FilterActivity.this.startActivity(orderIntent);
 			}
 		});
 
 		filterAdapter = new FilterAdapter(context, R.layout.row_activity_filter, filters);
 		setListAdapter(filterAdapter);
 
+	}
+
+	public static List<Filter> getFilters() {
+		return filters;
 	}
 
 	private void createFilters() {

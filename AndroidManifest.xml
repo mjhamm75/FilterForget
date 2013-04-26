@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="FilterActivity"></activity>             
         <activity android:name="InfoActivity"></activity>             
+        <activity android:name="OrderActivity"></activity>             
     </application>
 
 </manifest>
