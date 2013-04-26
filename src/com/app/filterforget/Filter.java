@@ -9,6 +9,7 @@ public class Filter {
 	String width;
 	String height;
 	Date lastReplaced;
+	boolean checked = false;
 
 	public Filter(String name, String length, String width, String height) {
 		this.name = name;
@@ -59,6 +60,14 @@ public class Filter {
 
 	public Date getLastReplaced() {
 		return lastReplaced;
+	}
+
+	public void toggleChecked() {
+		checked = !checked;
+	}
+
+	public boolean getChecked() {
+		return checked;
 	}
 
 	public String getFormattedDate() {

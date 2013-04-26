@@ -7,6 +7,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -25,15 +27,23 @@ public class OrderActivity extends Activity {
 		final ListView lv = (ListView) findViewById(R.id.list_view_order_filter);
 		lv.setAdapter(orderAdapter);
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		
+		lv.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				
+			}
+		});
+		
+		
+		
 		Button orderButton = (Button) findViewById(R.id.orderFilters);
 		orderButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				SparseBooleanArray bool = lv.getCheckedItemPositions();
-				for (int i = 0; i < bool.size(); i++) {
-					System.out.println("Here");
-					System.out.println(i);
-				}
+				System.out.println("Continue");
+				SparseBooleanArray checked = lv.getCheckedItemPositions();
+				System.out.println(checked.size());
 			}
 		});
 

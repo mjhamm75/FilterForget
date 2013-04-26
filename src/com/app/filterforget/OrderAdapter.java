@@ -5,8 +5,10 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class OrderAdapter extends ArrayAdapter<Filter> {
@@ -24,12 +26,20 @@ public class OrderAdapter extends ArrayAdapter<Filter> {
 			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = vi.inflate(R.layout.row_filter_order, null);
 		}
-		Filter o = filters.get(position);
-		if (o != null) {
-//			CheckBox box = (CheckBox) v.findViewById(R.id.orderFilterCheck);
-//			box.setChecked(o.getChecked());
+		Filter filter = filters.get(position);
+		if (filter != null) {
+			final Filter finalFilter = filter;
+			CheckBox box = (CheckBox) v.findViewById(R.id.orderFilterCheck);
+			box.setChecked(filter.getChecked());
+			box.setOnClickListener(new OnClickListener() {				
+				@Override
+				public void onClick(View v) {
+					finalFilter.toggleChecked();
+				}
+			});			
+			
 			TextView filterName = (TextView) v.findViewById(R.id.orderFilterName);
-			filterName.setText(o.getName());
+			filterName.setText(filter.getName());
 		}
 		return v;
 	}
