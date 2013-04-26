@@ -13,7 +13,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 public class FilterActivity extends ListActivity {
 	final Context context = this;
@@ -64,8 +66,39 @@ public class FilterActivity extends ListActivity {
 		addFilter.setOnClickListener(new View.OnClickListener() {
 
 			@Override
-			public void onClick(View v) {
-				System.out.println("Add");
+			public void onClick(View view) {
+				final Dialog dialog = new Dialog(FilterActivity.this);
+				dialog.setContentView(R.layout.dialog_create_filter);
+				dialog.setTitle("Create Filter");
+				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+				Button buttonOk = (Button) dialog.findViewById(R.id.buttonFilterOk);
+				buttonOk.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						EditText filterName = (EditText) dialog.findViewById(R.id.filterName);
+						Spinner filterLength = (Spinner) dialog.findViewById(R.id.spinnerFilterLength);
+						Spinner filterHeight = (Spinner) dialog.findViewById(R.id.spinnerFilterHeight);
+						Spinner filterWidth = (Spinner) dialog.findViewById(R.id.spinnerFilterWidth);
+						String length = filterLength.getSelectedItem().toString();
+						String width = filterWidth.getSelectedItem().toString();
+						String height = filterHeight.getSelectedItem().toString();
+						String name = filterName.getText().toString();
+						Filter filter = new Filter(name, length, width, height);
+						filters.add(filter);
+						filterAdapter.notifyDataSetChanged();
+						dialog.dismiss();
+					}
+				});
+
+				Button buttonCancel = (Button) dialog.findViewById(R.id.buttonFilterCancel);
+				buttonCancel.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+					}
+				});
+
+				dialog.show();
 			}
 		});
 

@@ -9,6 +9,8 @@
     <string name="delete_filter">Delete Filter</string>
     <string name="cancel">Cancel</string>
     <string name="order_prompt">Select filter</string>
+    <string name="height_prompt">Choose a height (inches)</string>
+    <string name="length_prompt">Choose a length (inches)</string>
 
     <string-array name="filter_array">
         <item>Discount - 7.95</item>
