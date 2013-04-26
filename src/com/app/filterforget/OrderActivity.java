@@ -41,9 +41,11 @@ public class OrderActivity extends Activity {
 		orderButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				System.out.println("Continue");
-				SparseBooleanArray checked = lv.getCheckedItemPositions();
-				System.out.println(checked.size());
+				List<Filter> selected = Filter.getAllSelected(filters);
+				System.out.println(selected.size());
+				for(Filter filter: selected){
+					System.out.println(filter.name);
+				}
 			}
 		});
 

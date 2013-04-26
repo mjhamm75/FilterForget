@@ -1,7 +1,9 @@
 package com.app.filterforget;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Filter {
 	String name;
@@ -68,6 +70,16 @@ public class Filter {
 
 	public boolean getChecked() {
 		return checked;
+	}
+
+	public static List<Filter> getAllSelected(List<Filter> filters) {
+		List<Filter> selected = new ArrayList<Filter>();
+		for (Filter filter : filters) {
+			if (filter.getChecked()) {
+				selected.add(filter);
+			}
+		}
+		return selected;
 	}
 
 	public String getFormattedDate() {
