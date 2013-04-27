@@ -22,7 +22,6 @@ public class FilterActivity extends ListActivity {
 	final Context context = this;
 	static List<Filter> filters = new ArrayList<Filter>();
 	private FilterAdapter filterAdapter;
-	private FilterOrderAdapter orderAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
