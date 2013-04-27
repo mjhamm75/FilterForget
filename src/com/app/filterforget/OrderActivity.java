@@ -5,10 +5,11 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -27,24 +28,22 @@ public class OrderActivity extends Activity {
 		final ListView lv = (ListView) findViewById(R.id.list_view_order_filter);
 		lv.setAdapter(orderAdapter);
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		
+
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				
+
 			}
 		});
-		
-		
-		
+
 		Button orderButton = (Button) findViewById(R.id.orderFilters);
 		orderButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				List<Filter> selected = Filter.getAllSelected(filters);
 				System.out.println(selected.size());
-				for(Filter filter: selected){
-					System.out.println(filter.name);
+				for (Filter filter : selected) {
+					System.out.println(filter.name + " " + filter.price);
 				}
 			}
 		});

@@ -3,12 +3,16 @@ package com.app.filterforget;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class OrderAdapter extends ArrayAdapter<Filter> {
@@ -29,19 +33,34 @@ public class OrderAdapter extends ArrayAdapter<Filter> {
 		Filter filter = filters.get(position);
 		if (filter != null) {
 			final Filter finalFilter = filter;
+
 			CheckBox box = (CheckBox) v.findViewById(R.id.orderFilterCheck);
 			box.setChecked(filter.getChecked());
-			box.setOnClickListener(new OnClickListener() {				
+			box.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					finalFilter.toggleChecked();
 				}
-			});			
-			
+			});
+
 			TextView filterName = (TextView) v.findViewById(R.id.orderFilterName);
 			filterName.setText(filter.getName());
+
+			Spinner filterPrice = (Spinner) v.findViewById(R.id.orderFilterPrice);
+			filterPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+				@Override
+				public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+					String price = parent.getItemAtPosition(position).toString();
+					finalFilter.setPrice(price);
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0) {
+					Log.i("OrderAdapter", "Filter price has to be selected.");
+				}
+			});
+
 		}
 		return v;
 	}
-
 }

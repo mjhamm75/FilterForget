@@ -10,6 +10,8 @@ public class Filter {
 	String length;
 	String width;
 	String height;
+	String price;
+	String quantity;
 	Date lastReplaced;
 	boolean checked = false;
 
@@ -70,6 +72,22 @@ public class Filter {
 
 	public boolean getChecked() {
 		return checked;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
 	}
 
 	public static List<Filter> getAllSelected(List<Filter> filters) {
