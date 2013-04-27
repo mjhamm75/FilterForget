@@ -11,6 +11,12 @@ public class InfoActivity extends Activity {
 		setContentView(R.layout.activity_info);
 		
 		TimePicker timePicker = (TimePicker)findViewById(R.id.timePicker);
-		
+		timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {			
+			@Override
+			public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+				System.out.println(hourOfDay);
+				System.out.println(minute);				
+			}
+		});
 	}
 }
