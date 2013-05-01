@@ -27,6 +27,7 @@
         <activity android:name="FilterActivity" ></activity>
         <activity android:name="InfoActivity" ></activity>
         <activity android:name="OrderActivity" ></activity>
+        <activity android:name="FilterOrderPopup" ></activity>
         <receiver android:name="OrderAlarmBroadcastReceiver" >
             <intent-filter>
                 <action android:name="com.app.filterforget.NOTIFY" />
