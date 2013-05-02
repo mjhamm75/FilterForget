@@ -24,7 +24,7 @@ public class InfoActivity extends Activity {
 		Intent intent = new Intent(this, OrderAlarmBroadcastReceiver.class);
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324243, intent, 0);
 		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (5 * 1000), 6 * 1000,
+		alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (8 * 1000),
 				pendingIntent);
 	}
 	

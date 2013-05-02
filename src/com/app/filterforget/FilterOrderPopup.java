@@ -18,6 +18,7 @@ public class FilterOrderPopup extends Activity {
 
 		IntentFilter filter = new IntentFilter(ACTION);
 		this.registerReceiver(mReceivedSMSReceiver, filter);
+		displayAlert();
 	}
 
 	private void displayAlert() {
@@ -26,6 +27,7 @@ public class FilterOrderPopup extends Activity {
 				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
+						finish();
 					}
 				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
