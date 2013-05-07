@@ -107,7 +107,7 @@ public class FilterActivity extends ListActivity {
 
 			@Override
 			public void onClick(View v) {
-				Intent orderIntent = new Intent(FilterActivity.this, OrderActivity.class);
+				Intent orderIntent = new Intent(FilterActivity.this, FilterSelectActivity.class);
 				FilterActivity.this.startActivity(orderIntent);
 			}
 		});

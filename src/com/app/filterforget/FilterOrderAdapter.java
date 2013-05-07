@@ -22,7 +22,7 @@ public class FilterOrderAdapter extends ArrayAdapter<Filter> {
 		View v = convertView;
 		if (v == null) {
 			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.row_filter_order, null);
+			v = vi.inflate(R.layout.row_filter_select, null);
 		}
 		Filter o = filters.get(position);
 		if (o != null) {

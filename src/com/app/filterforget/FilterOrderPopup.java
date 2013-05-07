@@ -23,15 +23,16 @@ public class FilterOrderPopup extends Activity {
 
 	private void displayAlert() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Are you sure you want to exit?").setCancelable(false)
-				.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		builder.setMessage("Time to order filters").setCancelable(false)
+				.setPositiveButton("Order Now", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 						finish();
 					}
-				}).setNegativeButton("No", new DialogInterface.OnClickListener() {
+				}).setNegativeButton("Wait", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
+						finish();
 					}
 				});
 		AlertDialog alert = builder.create();
