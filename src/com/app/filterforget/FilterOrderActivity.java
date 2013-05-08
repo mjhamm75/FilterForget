@@ -1,9 +1,9 @@
 package com.app.filterforget;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class FilterOrderActivity extends ListActivity {
+public class FilterOrderActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
