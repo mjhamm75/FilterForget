@@ -31,6 +31,8 @@
         <activity android:name="FilterOrderPopup" 
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
         </activity>
+        <activity android:name="FilterSelectActivity"></activity>
+        <activity android:name="FilterOrderActivity"></activity>
         <receiver android:name="OrderAlarmBroadcastReceiver" >
             <intent-filter>
                 <action android:name="com.app.filterforget.NOTIFY" />
