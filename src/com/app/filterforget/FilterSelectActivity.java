@@ -2,7 +2,6 @@ package com.app.filterforget;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,16 +11,15 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class FilterSelectActivity extends Activity {
+public class FilterSelectActivity extends ContainerActivity {
 	final Context context = this;
-	static List<Filter> filters;
 	SelectAdapter selectAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order);
-		filters = FilterActivity.getFilters();
+		filters = ContainerActivity.getFilters();
 		selectAdapter = new SelectAdapter(context, R.layout.row_filter_select, filters);
 
 		final ListView lv = (ListView) findViewById(R.id.list_view_select_filter);

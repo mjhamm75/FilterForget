@@ -1,11 +1,9 @@
 package com.app.filterforget;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import android.app.Dialog;
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,9 +16,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-public class FilterActivity extends ListActivity {
+public class FilterActivity extends ContainerActivity {
 	final Context context = this;
-	static List<Filter> filters = new ArrayList<Filter>();
 	private FilterAdapter filterAdapter;
 
 	@Override
@@ -28,7 +25,7 @@ public class FilterActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_filter);
 
-		ListView filterActivityView = getListView();
+		ListView filterActivityView = (ListView)findViewById(R.id.filter_list);
 
 		filterActivityView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -113,12 +110,8 @@ public class FilterActivity extends ListActivity {
 		});
 
 		filterAdapter = new FilterAdapter(context, R.layout.row_activity_filter, filters);
-		setListAdapter(filterAdapter);
+		filterActivityView.setAdapter(filterAdapter);
 
-	}
-
-	public static List<Filter> getFilters() {
-		return filters;
 	}
 
 	private void createFilters() {
