@@ -16,7 +16,7 @@ public class FilterSelectActivity extends ContainerActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_order);
+		setContentView(R.layout.activity_select);
 		filters = ContainerActivity.getFilters();
 		selectAdapter = new SelectAdapter(context, R.layout.row_filter_select, filters);
 
@@ -40,7 +40,7 @@ public class FilterSelectActivity extends ContainerActivity {
 			}
 		});
 
-		Button orderButtonCancel = (Button) findViewById(R.id.orderFiltersCancel);
+		Button orderButtonCancel = (Button) findViewById(R.id.selectFiltersCancel);
 		orderButtonCancel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
