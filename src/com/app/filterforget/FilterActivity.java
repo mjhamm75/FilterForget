@@ -1,7 +1,6 @@
 package com.app.filterforget;
 
 import java.util.Date;
-import java.util.List;
 
 import android.app.Dialog;
 import android.content.Context;

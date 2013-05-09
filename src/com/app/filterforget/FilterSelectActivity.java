@@ -1,7 +1,5 @@
 package com.app.filterforget;
 
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,7 +35,6 @@ public class FilterSelectActivity extends ContainerActivity {
 		selectButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				List<Filter> selected = Filter.getAllSelected(filters);
 				Intent orderIntent = new Intent(FilterSelectActivity.this, FilterOrderActivity.class);
 				FilterSelectActivity.this.startActivity(orderIntent);
 			}
