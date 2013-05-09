@@ -4,9 +4,9 @@
     android:orientation="vertical" >
 
     <ListView
-        android:id="@+id/list_view_select_filter"
+        android:id="@+id/list_view_order_filter"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" >
     </ListView>
 
@@ -17,11 +17,11 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/selectFilters"
+            android:id="@+id/orderFilters"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/continuation" >
+            android:text="@string/order_filter" >
         </Button>
 
         <Button
