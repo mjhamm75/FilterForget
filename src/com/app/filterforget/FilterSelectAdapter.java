@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class FilterSelectAdapter extends ArrayAdapter<Filter> {
+	List<Filter> filters;
 
 	public FilterSelectAdapter(Context context, int textViewResourceId, List<Filter> filters) {
 		super(context, textViewResourceId, filters);
@@ -27,7 +28,6 @@ public class FilterSelectAdapter extends ArrayAdapter<Filter> {
 			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = vi.inflate(R.layout.row_filter_select, null);
 		}
-		List<Filter> filters = ContainerActivity.getFilters();
 		Filter filter = filters.get(position);
 		if (filter != null) {
 			final Filter finalFilter = filter;
