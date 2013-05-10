@@ -28,9 +28,6 @@ public class FilterOrderAdapter extends ArrayAdapter<Filter> {
 		if (o != null) {
 			TextView filterName = (TextView) v.findViewById(R.id.orderFilterName);
 			filterName.setText(o.getName());
-			// TextView lastReplaced = (TextView)
-			// v.findViewById(R.id.orderLastReplaced);
-			// lastReplaced.setText(o.getFormattedDate());
 		}
 		return v;
 	}
