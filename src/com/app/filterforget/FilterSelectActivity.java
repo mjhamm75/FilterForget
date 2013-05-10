@@ -11,14 +11,14 @@ import android.widget.ListView;
 
 public class FilterSelectActivity extends ContainerActivity {
 	final Context context = this;
-	SelectAdapter selectAdapter;
+	FilterSelectAdapter selectAdapter;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select);
 		filters = ContainerActivity.getFilters();
-		selectAdapter = new SelectAdapter(context, R.layout.row_filter_select, filters);
+		selectAdapter = new FilterSelectAdapter(context, R.layout.row_filter_select, filters);
 
 		final ListView lv = (ListView) findViewById(R.id.list_view_select_filter);
 		lv.setAdapter(selectAdapter);

@@ -4,29 +4,19 @@
     android:layout_height="wrap_content" >
 
     <CheckBox
-        android:id="@+id/selectFilterCheck"
+        android:id="@+id/orderFilterCheck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:focusable="false" />
 
     <TextView
-        android:id="@+id/selectFilterName"
+        android:id="@+id/orderFilterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="8dp"
-        android:textIsSelectable="true"
-        android:layout_toRightOf="@+id/selectFilterCheck"
+        android:layout_toRightOf="@+id/orderFilterCheck"
         android:gravity="left" />
-
-    <Spinner
-        android:id="@+id/selectFilterPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:entries="@array/filter_array"
-        android:prompt="@string/select_prompt" >
-    </Spinner>
 
 </RelativeLayout>
