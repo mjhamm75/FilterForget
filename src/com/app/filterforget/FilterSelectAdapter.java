@@ -19,6 +19,7 @@ public class FilterSelectAdapter extends ArrayAdapter<Filter> {
 
 	public FilterSelectAdapter(Context context, int textViewResourceId, List<Filter> filters) {
 		super(context, textViewResourceId, filters);
+		this.filters = filters;
 	}
 
 	@Override
