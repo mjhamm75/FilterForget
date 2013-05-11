@@ -17,4 +17,12 @@ public class ContainerActivity extends Activity {
 		}
 		return selectedFilters;
 	}
+	
+	protected static double getTotal() {
+		double total = 0;
+		for(Filter filter: filters) {
+			
+		}
+		return total;		
+	}
 }

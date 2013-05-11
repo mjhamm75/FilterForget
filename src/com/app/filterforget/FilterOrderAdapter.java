@@ -25,12 +25,12 @@ public class FilterOrderAdapter extends ArrayAdapter<Filter> {
 			v = vi.inflate(R.layout.row_filter_order, null);
 		}
 		Filter o = filters.get(position);
-		if (o != null && o.getChecked() == true) {
+		if (o != null) {
 			TextView filterName = (TextView) v.findViewById(R.id.orderFilterName);
 			filterName.setText(o.getName());
 
-			TextView filterPrice = (TextView) v.findViewById(R.id.orderFilterPrice);
-			filterPrice.setText(o.getPrice());
+			TextView filterPrice= (TextView) v.findViewById(R.id.orderFilterName);
+			filterPrice.setText(o.getName());
 		}
 		return v;
 	}
