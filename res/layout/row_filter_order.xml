@@ -3,20 +3,21 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
-    <CheckBox
-        android:id="@+id/orderFilterCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:focusable="false" />
-
     <TextView
         android:id="@+id/orderFilterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/orderFilterCheck"
         android:gravity="left" />
+    
+    <TextView
+        android:id="@+id/orderFilterPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/orderFilterName"
+         />    
 
 </RelativeLayout>

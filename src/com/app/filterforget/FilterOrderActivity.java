@@ -14,8 +14,10 @@ public class FilterOrderActivity extends ContainerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order);
-		adapter = new FilterOrderAdapter(context, R.layout.row_filter_order, filters);
+		
+		adapter = new FilterOrderAdapter(context, R.layout.row_filter_order, getSelectedFilters());
 		ListView filterList = (ListView) findViewById(R.id.list_view_order_filter);
+		filterList.setDivider(null);
 		filterList.setAdapter(adapter);
 
 		Button order = (Button) findViewById(R.id.orderFilters);

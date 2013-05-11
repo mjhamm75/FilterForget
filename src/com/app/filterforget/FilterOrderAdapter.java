@@ -13,7 +13,7 @@ public class FilterOrderAdapter extends ArrayAdapter<Filter> {
 	List<Filter> filters;
 
 	public FilterOrderAdapter(Context context, int textViewResourceId, List<Filter> filters) {
-		super(context, textViewResourceId);
+		super(context, textViewResourceId, filters);
 		this.filters = filters;
 	}
 	
@@ -25,9 +25,12 @@ public class FilterOrderAdapter extends ArrayAdapter<Filter> {
 			v = vi.inflate(R.layout.row_filter_order, null);
 		}
 		Filter o = filters.get(position);
-		if (o != null) {
+		if (o != null && o.getChecked() == true) {
 			TextView filterName = (TextView) v.findViewById(R.id.orderFilterName);
 			filterName.setText(o.getName());
+
+			TextView filterPrice = (TextView) v.findViewById(R.id.orderFilterPrice);
+			filterPrice.setText(o.getPrice());
 		}
 		return v;
 	}
