@@ -15,7 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="8dp"
-            android:gravity="left" />
+            android:gravity="left"
+            android:textColor="#ffffff" />
 
         <TextView
             android:id="@+id/lastReplaced"
@@ -23,13 +24,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="8dp"
-            android:gravity="right" />
+            android:gravity="right"
+            android:textColor="#ffffff" />
     </RelativeLayout>
 
     <TextView
         android:id="@+id/filterSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        android:textColor="#ffffff" />
 
 </LinearLayout>
