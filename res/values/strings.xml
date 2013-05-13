@@ -15,6 +15,13 @@
     <string name="test">Test</string>
     <string name="finalize">Finalize Order</string>
     <string name="total">Total: </string>
+    <string name="name">Name/Address</string>
+    <string name="nameFirst">First Name:</string>
+    <string name="nameLast">Last Name:</string>
+    <string name="address">Address:</string>
+    <string name="state">State:</string>
+    <string name="zipcode">Zip Code:</string>
+    
 
     <string-array name="filter_array">
         <item>Discount - 7.95</item>
