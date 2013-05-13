@@ -2,6 +2,8 @@ package com.app.filterforget;
 
 import java.util.Date;
 
+import com.app.filterforget.domain.Filter;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
