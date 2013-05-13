@@ -13,23 +13,4 @@ public class InfoActivity extends ContainerActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
 	}
-
-	public void startAlert(View view) {
-//		Intent intent = new Intent();
-//		intent.setAction("com.app.filterforget.NOTIFY");
-//		sendBroadcast(intent);
-				
-		Intent intent = new Intent(this, OrderAlarmBroadcastReceiver.class);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324243, intent, 0);
-		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-		alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (8 * 1000),
-				pendingIntent);
-	}
-	
-	public void stopAlert(View view) {
-		Intent intent = new Intent(this, OrderAlarmBroadcastReceiver.class);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 234324243, intent, 0);
-		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-		alarmManager.cancel(pendingIntent);
-	}
 }

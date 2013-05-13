@@ -4,31 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <!--
-         <Button
-        android:id="@+id/btStart"
-        android:onClick="startAlert"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        tools:context=".WidgetAlarmManagerActivity" />
-
-    <Button
-        android:id="@+id/btCancel"
-        android:onClick="stopAlert"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        tools:context=".WidgetAlarmManagerActivity" />
-
-    <Button
-        android:id="@+id/btOneTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="One Time"
-        tools:context=".WidgetAlarmManagerActivity" />
-    -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
