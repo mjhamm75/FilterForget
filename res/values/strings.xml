@@ -21,6 +21,7 @@
     <string name="address">Address:</string>
     <string name="state">State:</string>
     <string name="zipcode">Zip Code:</string>
+    <string name="credit_cards">Credit Cards</string>
     
 
     <string-array name="filter_array">
