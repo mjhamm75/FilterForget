@@ -9,7 +9,7 @@ import android.widget.ListView;
 public class FilterOrderActivity extends ContainerActivity {
 	FilterOrderAdapter adapter;
 	Context context = this;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -18,6 +18,8 @@ public class FilterOrderActivity extends ContainerActivity {
 		adapter = new FilterOrderAdapter(context, R.layout.row_filter_order, getSelectedFilters());
 		ListView filterList = (ListView) findViewById(R.id.list_view_order_filter);
 		filterList.setDivider(null);
+		View footer = getLayoutInflater().inflate(R.layout.activity_order_footer, null);
+		filterList.addFooterView(footer);
 		filterList.setAdapter(adapter);
 
 		Button order = (Button) findViewById(R.id.orderFilters);
