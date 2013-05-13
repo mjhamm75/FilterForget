@@ -2,6 +2,8 @@ package com.app.filterforget;
 
 import java.util.List;
 
+import com.app.filterforget.domain.Filter;
+
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
