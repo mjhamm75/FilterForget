@@ -19,9 +19,11 @@
     <string name="nameFirst">First Name:</string>
     <string name="nameLast">Last Name:</string>
     <string name="address">Address:</string>
+    <string name="city">City:</string>
     <string name="state">State:</string>
     <string name="zipcode">Zip Code:</string>
     <string name="credit_cards">Credit Cards</string>
+    <string name="add_card">Add New Card</string>
     
 
     <string-array name="filter_array">
@@ -57,5 +59,7 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+    
+    <color name="green">#60C160</color>
 
 </resources>
