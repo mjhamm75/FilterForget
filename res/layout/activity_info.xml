@@ -146,6 +146,7 @@
         android:layout_height="wrap_content"
         android:text="@string/add_card"
         android:layout_marginLeft="10dp"
+        android:id="@+id/button_add_card"
         
         >
         
