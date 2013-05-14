@@ -2,8 +2,6 @@ package com.app.filterforget;
 
 import java.util.Date;
 
-import com.app.filterforget.domain.Filter;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,9 +11,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.app.filterforget.domain.Filter;
 
 public class FilterActivity extends ContainerActivity {
 	final Context context = this;
@@ -67,8 +68,8 @@ public class FilterActivity extends ContainerActivity {
 			public void onClick(View view) {
 				final Dialog dialog = new Dialog(FilterActivity.this);
 				dialog.setContentView(R.layout.dialog_create_filter);
+				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				dialog.setTitle("Create Filter");
-				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 				Button buttonOk = (Button) dialog.findViewById(R.id.buttonFilterOk);
 				buttonOk.setOnClickListener(new View.OnClickListener() {
 					@Override
@@ -87,6 +88,9 @@ public class FilterActivity extends ContainerActivity {
 						dialog.dismiss();
 					}
 				});
+				
+				DatePicker expDate = (DatePicker)dialog.findViewById(R.id.datePickerCreditCard);
+				
 
 				Button buttonCancel = (Button) dialog.findViewById(R.id.buttonFilterCancel);
 				buttonCancel.setOnClickListener(new View.OnClickListener() {
