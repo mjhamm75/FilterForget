@@ -24,6 +24,9 @@
     <string name="zipcode">Zip Code:</string>
     <string name="credit_cards">Credit Cards</string>
     <string name="add_card">Add New Card</string>
+    <string name="card_info">Credit Card Info</string>
+    <string name="number">Number</string>
+    
     
 
     <string-array name="filter_array">

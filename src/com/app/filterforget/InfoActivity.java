@@ -17,6 +17,9 @@ public class InfoActivity extends ContainerActivity {
 			@Override
 			public void onClick(View v) {			
 				Dialog dialog = new Dialog(InfoActivity.this);
+				dialog.setContentView(R.layout.dialog_add_credit_card);
+				dialog.setTitle(R.string.card_info);
+				dialog.show();
 			}
 		});
 	}
