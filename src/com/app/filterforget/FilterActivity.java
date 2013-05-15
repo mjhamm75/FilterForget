@@ -89,8 +89,6 @@ public class FilterActivity extends ContainerActivity {
 					}
 				});
 				
-				DatePicker expDate = (DatePicker)dialog.findViewById(R.id.datePickerCreditCard);
-				
 
 				Button buttonCancel = (Button) dialog.findViewById(R.id.buttonFilterCancel);
 				buttonCancel.setOnClickListener(new View.OnClickListener() {

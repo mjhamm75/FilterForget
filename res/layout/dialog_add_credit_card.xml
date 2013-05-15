@@ -8,30 +8,59 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/number" >
-        </TextView>
+            android:text="@string/number" />
 
         <EditText
             android:id="@+id/creditCardNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent" >
-        </EditText>
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:inputType="number"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:onClick="selectDate"
+        android:orientation="vertical" >
 
-        <DatePicker
-            android:id="@+id/datePickerCreditCard"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:text="@string/expDate" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="selectDate"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/expDate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:paddingLeft="8dp"
+                android:onClick="selectDate"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:contentDescription="@string/expDate"
+                android:cropToPadding="true"
+                android:onClick="selectDate"
+                android:paddingRight="8dp"
+                android:src="@drawable/ic_datepicker" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -44,16 +73,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/add_filter" >
-        </Button>
+            android:text="@string/add_filter" />
 
         <Button
             android:id="@+id/buttonAddCardCancel"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/cancel" >
-        </Button>
+            android:text="@string/cancel" />
     </LinearLayout>
 
 </LinearLayout>
