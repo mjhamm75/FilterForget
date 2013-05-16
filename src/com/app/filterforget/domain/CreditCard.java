@@ -3,27 +3,27 @@ package com.app.filterforget.domain;
 import java.util.Date;
 
 public class CreditCard {
-	int cardNumber;
-	Date expDate;
+	String cardNumber;
+	String expDate;
 
-	public CreditCard(int cardNumber, Date expDate) {
+	public CreditCard(String cardNumber, String expDate) {
 		this.cardNumber = cardNumber;
 		this.expDate = expDate;
 	}
 
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
 
-	public void setCardNumber(int cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 
-	public Date getExpDate() {
+	public String  getExpDate() {
 		return expDate;
 	}
 
-	public void setExpDate(Date expDate) {
+	public void setExpDate(String expDate) {
 		this.expDate = expDate;
 	}
 

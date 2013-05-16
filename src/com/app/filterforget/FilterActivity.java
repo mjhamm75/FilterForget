@@ -27,9 +27,9 @@ public class FilterActivity extends ContainerActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_filter);
 
-		ListView filterActivityView = (ListView)findViewById(R.id.filter_list);
+		ListView filterList = (ListView)findViewById(R.id.filter_list);
 
-		filterActivityView.setOnItemClickListener(new OnItemClickListener() {
+		filterList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				final int filterPosition = position;
@@ -113,7 +113,7 @@ public class FilterActivity extends ContainerActivity {
 		});
 
 		filterAdapter = new FilterAdapter(context, R.layout.row_activity_filter, filters);
-		filterActivityView.setAdapter(filterAdapter);
+		filterList.setAdapter(filterAdapter);
 
 	}
 

@@ -1,6 +1,8 @@
 package com.app.filterforget;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -11,13 +13,19 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
+
+import com.app.filterforget.domain.CreditCard;
 
 public class InfoActivity extends ContainerActivity {
+	List<CreditCard> cards;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
+		
+		cards = new ArrayList<CreditCard>();
 
 		Button addCreditCard = (Button) findViewById(R.id.button_add_card);
 		addCreditCard.setOnClickListener(new View.OnClickListener() {
@@ -29,8 +37,10 @@ public class InfoActivity extends ContainerActivity {
 				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				dialog.setTitle(R.string.card_info);
 
-				ImageButton expDate = (ImageButton) dialog.findViewById(R.id.buttonExpDate);
-				expDate.setOnClickListener(new View.OnClickListener() {
+				final EditText expDate = (EditText) dialog.findViewById(R.id.expDate);
+
+				ImageButton expDateButton = (ImageButton) dialog.findViewById(R.id.buttonExpDate);
+				expDateButton.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
 
@@ -44,6 +54,7 @@ public class InfoActivity extends ContainerActivity {
 							dateTime.set(Calendar.YEAR, year);
 							dateTime.set(Calendar.MONTH, monthOfYear);
 							dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+							expDate.setText(monthOfYear + "/" + dayOfMonth + "/" + year);
 						}
 					};
 				});
@@ -54,6 +65,10 @@ public class InfoActivity extends ContainerActivity {
 					public void onClick(View v) {
 						EditText cardNumber = (EditText) dialog.findViewById(R.id.creditCardNumber);
 						String number = cardNumber.getText().toString();
+						EditText expDate = (EditText)dialog.findViewById(R.id.expDate);
+						String expirationDateString = expDate.getText().toString();
+						
+						cards.add(new CreditCard(number, expirationDateString));
 
 					}
 				});
@@ -68,5 +83,8 @@ public class InfoActivity extends ContainerActivity {
 				dialog.show();
 			}
 		});
+		
+		ListView cards = (ListView)findViewById(R.id.list_cards);
+		
 	}
 }
