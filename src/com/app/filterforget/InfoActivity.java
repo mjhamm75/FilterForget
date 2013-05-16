@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -18,7 +19,9 @@ import android.widget.ListView;
 import com.app.filterforget.domain.CreditCard;
 
 public class InfoActivity extends ContainerActivity {
+	CreditCardAdapter cardAdapter;
 	List<CreditCard> cards;
+	Context context = this;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -66,9 +69,12 @@ public class InfoActivity extends ContainerActivity {
 						EditText cardNumber = (EditText) dialog.findViewById(R.id.creditCardNumber);
 						String number = cardNumber.getText().toString();
 						EditText expDate = (EditText)dialog.findViewById(R.id.expDate);
-						String expirationDateString = expDate.getText().toString();
+						String expirationDate = expDate.getText().toString();
 						
-						cards.add(new CreditCard(number, expirationDateString));
+						cards.add(new CreditCard(number, expirationDate));
+						cardAdapter.notifyDataSetChanged();
+						
+						dialog.dismiss();
 
 					}
 				});
@@ -84,7 +90,9 @@ public class InfoActivity extends ContainerActivity {
 			}
 		});
 		
-		ListView cards = (ListView)findViewById(R.id.list_cards);
+		cardAdapter = new CreditCardAdapter(context, R.layout.row_credit_card, cards);
+		ListView cardList = (ListView)findViewById(R.id.list_cards);
+		cardList.setAdapter(cardAdapter);
 		
 	}
 }

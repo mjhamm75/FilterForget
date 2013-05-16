@@ -29,7 +29,7 @@ public class CreditCardAdapter extends ArrayAdapter<CreditCard> {
 		CreditCard card = cards.get(position);
 		if (card != null) {
 			TextView cardNumber = (TextView) v.findViewById(R.id.cardNumber);
-			cardNumber.setText(cardNumber.toString());
+			cardNumber.setText(card.getMaskedNumber());
 
 			TextView expDate = (TextView) v.findViewById(R.id.cardExpDate);
 			expDate.setText(card.getExpDate());
