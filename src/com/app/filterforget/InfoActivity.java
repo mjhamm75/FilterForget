@@ -98,6 +98,21 @@ public class InfoActivity extends ContainerActivity {
 				dialog.setContentView(R.layout.dialog_add_info);
 				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				dialog.setTitle(R.string.personal_info);
+				
+				Button addInfo = (Button)dialog.findViewById(R.id.buttonAddInfo);
+				addInfo.setOnClickListener(new View.OnClickListener() {					
+					@Override
+					public void onClick(View v) {
+						EditText firstName = (EditText)dialog.findViewById(R.id.nameFirstAdd);
+						EditText lastName = (EditText)dialog.findViewById(R.id.nameLastAdd);
+						EditText address = (EditText)dialog.findViewById(R.id.addressAdd);
+						EditText city = (EditText)dialog.findViewById(R.id.cityAdd);
+						EditText state = (EditText)dialog.findViewById(R.id.stateAdd);
+						EditText zipcode = (EditText)dialog.findViewById(R.id.zipcodeAdd);
+						
+					}
+				});
+				
 				dialog.show();
 			}
 		});
