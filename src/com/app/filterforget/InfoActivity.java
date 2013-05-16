@@ -90,6 +90,18 @@ public class InfoActivity extends ContainerActivity {
 			}
 		});
 		
+		Button addInfo = (Button)findViewById(R.id.button_edit_info);
+		addInfo.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final Dialog dialog = new Dialog(InfoActivity.this);
+				dialog.setContentView(R.layout.dialog_add_info);
+				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				dialog.setTitle(R.string.personal_info);
+				dialog.show();
+			}
+		});
+		
 		cardAdapter = new CreditCardAdapter(context, R.layout.row_credit_card, cards);
 		ListView cardList = (ListView)findViewById(R.id.list_cards);
 		cardList.setAdapter(cardAdapter);

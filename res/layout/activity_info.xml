@@ -29,12 +29,11 @@
                 android:layout_marginRight="10dp"
                 android:text="@string/nameFirst" />
 
-            <EditText
+            <TextView
                 android:id="@+id/nameFirst"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp" >
-            </EditText>
+                android:layout_marginRight="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -48,12 +47,11 @@
                 android:layout_marginRight="10dp"
                 android:text="@string/nameLast" />
 
-            <EditText
+            <TextView
                 android:id="@+id/nameLast"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp" >
-            </EditText>
+                android:layout_marginRight="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -67,12 +65,11 @@
                 android:layout_marginRight="10dp"
                 android:text="@string/address" />
 
-            <EditText
+            <TextView
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp" >
-            </EditText>
+                android:layout_marginRight="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -86,12 +83,11 @@
                 android:layout_marginRight="10dp"
                 android:text="@string/city" />
 
-            <EditText
+            <TextView
                 android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp" >
-            </EditText>
+                android:layout_marginRight="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -105,12 +101,11 @@
                 android:layout_marginRight="10dp"
                 android:text="@string/state" />
 
-            <EditText
+            <TextView
                 android:id="@+id/state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp" >
-            </EditText>
+                android:layout_marginRight="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -124,13 +119,19 @@
                 android:layout_marginRight="10dp"
                 android:text="@string/zipcode" />
 
-            <EditText
+            <TextView
                 android:id="@+id/zipcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp" >
-            </EditText>
+                android:layout_marginRight="10dp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button_edit_info"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/edit_info" />
     </LinearLayout>
 
     <TextView
@@ -149,9 +150,9 @@
 
     <Button
         android:id="@+id/button_add_card"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:text="@string/add_card" >
     </Button>
 

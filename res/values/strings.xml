@@ -27,6 +27,8 @@
     <string name="card_info">Credit Card Info</string>
     <string name="number">Number</string>
     <string name="expDate">Expiration Date</string>
+    <string name="edit_info">Edit Personal Info</string>
+    <string name="personal_info">Personal Info</string>
     
     
 
