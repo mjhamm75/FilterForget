@@ -15,8 +15,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.app.filterforget.domain.CreditCard;
+import com.app.filterforget.domain.User;
 
 public class InfoActivity extends ContainerActivity {
 	CreditCardAdapter cardAdapter;
@@ -27,7 +29,7 @@ public class InfoActivity extends ContainerActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
-		
+
 		cards = new ArrayList<CreditCard>();
 
 		Button addCreditCard = (Button) findViewById(R.id.button_add_card);
@@ -68,12 +70,12 @@ public class InfoActivity extends ContainerActivity {
 					public void onClick(View v) {
 						EditText cardNumber = (EditText) dialog.findViewById(R.id.creditCardNumber);
 						String number = cardNumber.getText().toString();
-						EditText expDate = (EditText)dialog.findViewById(R.id.expDate);
+						EditText expDate = (EditText) dialog.findViewById(R.id.expDate);
 						String expirationDate = expDate.getText().toString();
-						
+
 						cards.add(new CreditCard(number, expirationDate));
 						cardAdapter.notifyDataSetChanged();
-						
+
 						dialog.dismiss();
 
 					}
@@ -89,37 +91,86 @@ public class InfoActivity extends ContainerActivity {
 				dialog.show();
 			}
 		});
-		
-		Button addInfo = (Button)findViewById(R.id.button_edit_info);
-		addInfo.setOnClickListener(new View.OnClickListener() {
+
+		Button editInfo = (Button) findViewById(R.id.button_edit_info);
+		editInfo.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				final Dialog dialog = new Dialog(InfoActivity.this);
 				dialog.setContentView(R.layout.dialog_add_info);
 				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				dialog.setTitle(R.string.personal_info);
+
+				final EditText firstName = (EditText) dialog.findViewById(R.id.nameFirstAdd);
+				firstName.setText(User.USER.getFirstName());
 				
-				Button addInfo = (Button)dialog.findViewById(R.id.buttonAddInfo);
-				addInfo.setOnClickListener(new View.OnClickListener() {					
+				final EditText lastName = (EditText) dialog.findViewById(R.id.nameLastAdd);
+				lastName.setText(User.USER.getLastName());
+				
+				final EditText address = (EditText) dialog.findViewById(R.id.addressAdd);
+				address.setText(User.USER.getAddress());
+
+				final EditText city = (EditText) dialog.findViewById(R.id.cityAdd);
+				city.setText(User.USER.getCity());
+				
+				final EditText state = (EditText) dialog.findViewById(R.id.stateAdd);
+				state.setText(User.USER.getState());
+				
+				final EditText zipcode = (EditText) dialog.findViewById(R.id.zipcodeAdd);
+				zipcode.setText(User.USER.getZipcode());
+				
+				
+				Button addEditedInfo = (Button) dialog.findViewById(R.id.buttonAddInfo);
+				addEditedInfo.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						EditText firstName = (EditText)dialog.findViewById(R.id.nameFirstAdd);
-						EditText lastName = (EditText)dialog.findViewById(R.id.nameLastAdd);
-						EditText address = (EditText)dialog.findViewById(R.id.addressAdd);
-						EditText city = (EditText)dialog.findViewById(R.id.cityAdd);
-						EditText state = (EditText)dialog.findViewById(R.id.stateAdd);
-						EditText zipcode = (EditText)dialog.findViewById(R.id.zipcodeAdd);
-						
+						String first = firstName.getText().toString();
+						String last = lastName.getText().toString();
+						String add = address.getText().toString();
+						String c = city.getText().toString();
+						String s = state.getText().toString();
+						String zip = zipcode.getText().toString();
+						User.USER.setFirstName(first);
+						User.USER.setLastName(last);
+						User.USER.setAddress(add);
+						User.USER.setCity(c);
+						User.USER.setState(s);
+						User.USER.setZipcode(zip);
+						paintInfo();
+						dialog.dismiss();
 					}
 				});
-				
+
+				Button cancelAddInfo = (Button) dialog.findViewById(R.id.buttonAddInfoCancel);
+				cancelAddInfo.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dialog.dismiss();
+					}
+				});
+
 				dialog.show();
 			}
 		});
-		
+
+		paintInfo();
 		cardAdapter = new CreditCardAdapter(context, R.layout.row_credit_card, cards);
-		ListView cardList = (ListView)findViewById(R.id.list_cards);
+		ListView cardList = (ListView) findViewById(R.id.list_cards);
 		cardList.setAdapter(cardAdapter);
-		
+	}
+
+	private void paintInfo() {
+		TextView firstName = (TextView) findViewById(R.id.nameFirst);
+		firstName.setText(User.USER.getFirstName());
+		TextView lastName = (TextView) findViewById(R.id.nameLast);
+		lastName.setText(User.USER.getLastName());
+		TextView address = (TextView) findViewById(R.id.address);
+		address.setText(User.USER.getAddress());
+		TextView city = (TextView) findViewById(R.id.city);
+		city.setText(User.USER.getCity());
+		TextView state = (TextView) findViewById(R.id.state);
+		state.setText(User.USER.getState());
+		TextView zipCode = (TextView) findViewById(R.id.zipcode);
+		zipCode.setText(User.USER.getZipcode());
 	}
 }
