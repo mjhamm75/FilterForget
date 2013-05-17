@@ -73,7 +73,7 @@ public class InfoActivity extends ContainerActivity {
 						EditText expDate = (EditText) dialog.findViewById(R.id.expDate);
 						String expirationDate = expDate.getText().toString();
 
-						cards.add(new CreditCard(number, expirationDate));
+						cards.add(new CreditCard(number, expirationDate, ""));
 						cardAdapter.notifyDataSetChanged();
 
 						dialog.dismiss();

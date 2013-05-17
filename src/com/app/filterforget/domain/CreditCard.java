@@ -1,12 +1,22 @@
 package com.app.filterforget.domain;
 
 public class CreditCard {
-	String cardNumber;
-	String expDate;
+	public int id;
+	public String cardNumber;
+	public String expDate;
+	public String cvc;
 
-	public CreditCard(String cardNumber, String expDate) {
+	public CreditCard(String cardNumber, String expDate, String cvc) {
 		this.cardNumber = cardNumber;
 		this.expDate = expDate;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCardNumber() {
@@ -23,6 +33,14 @@ public class CreditCard {
 
 	public void setExpDate(String expDate) {
 		this.expDate = expDate;
+	}
+
+	public String getCvc() {
+		return cvc;
+	}
+
+	public void setCvc(String cvc) {
+		this.cvc = cvc;
 	}
 
 	public String getMaskedNumber() {

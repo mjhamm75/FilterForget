@@ -63,6 +63,31 @@ public class DbData {
 		values.put(CITY, user.getCity());
 		values.put(STATE, user.getState());
 		values.put(ZIP, user.getZipcode());
+		
+		db.insert(TABLE_USER, null, values);
+	}
+	
+	public void insertFilter(Filter filter) {
+		db = dbHelper.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(F_ID, filter.getId());
+		values.put(FILTER_NAME, filter.getName());
+		values.put(FILTER_WIDTH, filter.getWidth());
+		values.put(FILTER_HEIGHT, filter.getHeight());
+		values.put(FILTER_LENGTH, filter.getLength());
+		
+		db.insert(TABLE_FILTER, null, values);
+	}
+
+	public void insertCreditCard(CreditCard creditCard) {
+		db = dbHelper.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(C_ID, creditCard.getId());
+		values.put(CARD_NUMBER, creditCard.getCardNumber());
+		values.put(CARD_EXP_DATE, creditCard.getExpDate());
+		values.put(CARD_VERIFICATION_CODE, creditCard.getCvc());
+				
+		db.insert(TABLE_CREDIT_CARD, null, values);
 	}
 	
 

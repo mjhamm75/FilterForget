@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Filter {
+	int id;
 	String name;
 	String length;
 	String width;
@@ -28,6 +29,14 @@ public class Filter {
 		this.width = width;
 		this.height = height;
 		this.lastReplaced = lastReplaced;
+	}
+	
+	public int getId(){
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
