@@ -108,7 +108,7 @@ public class InfoActivity extends ContainerActivity {
 				lastName.setText(User.USER.getLastName());
 				
 				final EditText address = (EditText) dialog.findViewById(R.id.addressAdd);
-				address.setText(User.USER.getAddress());
+				address.setText(User.USER.getAddress1());
 
 				final EditText city = (EditText) dialog.findViewById(R.id.cityAdd);
 				city.setText(User.USER.getCity());
@@ -132,7 +132,7 @@ public class InfoActivity extends ContainerActivity {
 						String zip = zipcode.getText().toString();
 						User.USER.setFirstName(first);
 						User.USER.setLastName(last);
-						User.USER.setAddress(add);
+						User.USER.setAddress1(add);
 						User.USER.setCity(c);
 						User.USER.setState(s);
 						User.USER.setZipcode(zip);
@@ -165,7 +165,7 @@ public class InfoActivity extends ContainerActivity {
 		TextView lastName = (TextView) findViewById(R.id.nameLast);
 		lastName.setText(User.USER.getLastName());
 		TextView address = (TextView) findViewById(R.id.address);
-		address.setText(User.USER.getAddress());
+		address.setText(User.USER.getAddress1());
 		TextView city = (TextView) findViewById(R.id.city);
 		city.setText(User.USER.getCity());
 		TextView state = (TextView) findViewById(R.id.state);
