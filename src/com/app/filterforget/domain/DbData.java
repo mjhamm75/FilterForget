@@ -51,7 +51,7 @@ public class DbData {
 		this.context = context;
 		dbHelper = new DbHelper();
 	}
-	
+
 	public void insertUser(User user) {
 		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -63,10 +63,25 @@ public class DbData {
 		values.put(CITY, user.getCity());
 		values.put(STATE, user.getState());
 		values.put(ZIP, user.getZipcode());
-		
+
 		db.insert(TABLE_USER, null, values);
 	}
-	
+
+	public void updateUser(User user) {
+		db = dbHelper.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(U_ID, 1);
+		values.put(FIRST_NAME, user.getFirstName());
+		values.put(LAST_NAME, user.getLastName());
+		values.put(ADDRESS_1, user.getAddress1());
+		values.put(ADDRESS_2, user.getAddress2());
+		values.put(CITY, user.getCity());
+		values.put(STATE, user.getState());
+		values.put(ZIP, user.getZipcode());
+
+		db.update(TABLE_USER, values, BaseColumns._ID + "= 1", null);
+	}
+
 	public void insertFilter(Filter filter) {
 		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -75,8 +90,13 @@ public class DbData {
 		values.put(FILTER_WIDTH, filter.getWidth());
 		values.put(FILTER_HEIGHT, filter.getHeight());
 		values.put(FILTER_LENGTH, filter.getLength());
-		
+
 		db.insert(TABLE_FILTER, null, values);
+	}
+
+	public void deleteFilter(Filter filter) {
+		db = dbHelper.getWritableDatabase();
+		db.delete(TABLE_FILTER, F_ID + "=" + filter.getId(), null);
 	}
 
 	public void insertCreditCard(CreditCard creditCard) {
@@ -86,10 +106,14 @@ public class DbData {
 		values.put(CARD_NUMBER, creditCard.getCardNumber());
 		values.put(CARD_EXP_DATE, creditCard.getExpDate());
 		values.put(CARD_VERIFICATION_CODE, creditCard.getCvc());
-				
+
 		db.insert(TABLE_CREDIT_CARD, null, values);
 	}
-	
+
+	public void deleteCreditCard(CreditCard creditCard) {
+		db = dbHelper.getReadableDatabase();
+		db.delete(TABLE_CREDIT_CARD, C_ID + "=" + creditCard.getId(), null);
+	}
 
 	class DbHelper extends SQLiteOpenHelper {
 
