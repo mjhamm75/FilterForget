@@ -73,7 +73,7 @@ public class InfoActivity extends ContainerActivity {
 						EditText expDate = (EditText) dialog.findViewById(R.id.expDate);
 						String expirationDate = expDate.getText().toString();
 
-						cards.add(new CreditCard(number, expirationDate, ""));
+						dbData.insertCreditCard(new CreditCard(number, expirationDate, ""));
 						cardAdapter.notifyDataSetChanged();
 
 						dialog.dismiss();
@@ -154,7 +154,7 @@ public class InfoActivity extends ContainerActivity {
 		});
 
 		paintInfo();
-		cardAdapter = new CreditCardAdapter(context, R.layout.row_credit_card, cards);
+		cardAdapter = new CreditCardAdapter(context, dbData.getCreditCards());
 		ListView cardList = (ListView) findViewById(R.id.list_cards);
 		cardList.setAdapter(cardAdapter);
 	}

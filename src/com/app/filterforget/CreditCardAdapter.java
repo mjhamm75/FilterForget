@@ -1,40 +1,39 @@
 package com.app.filterforget;
 
-import java.util.List;
-
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-import com.app.filterforget.domain.CreditCard;
+import com.app.filterforget.domain.DbData;
 
-public class CreditCardAdapter extends ArrayAdapter<CreditCard> {
-	List<CreditCard> cards;
+public class CreditCardAdapter extends CursorAdapter {
+	Context context;
+	Cursor cursor;
 
-	public CreditCardAdapter(Context context, int textViewResourceId, List<CreditCard> cards) {
-		super(context, textViewResourceId, cards);
-		this.cards = cards;
+	public CreditCardAdapter(Context context, Cursor cursor) {
+		super(context, cursor, true);
+		this.context = context;
+		this.cursor = cursor;
+		cursor.moveToFirst();
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = convertView;
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.row_credit_card, null);
-		}
-		CreditCard card = cards.get(position);
-		if (card != null) {
-			TextView cardNumber = (TextView) v.findViewById(R.id.cardNumber);
-			cardNumber.setText(card.getMaskedNumber());
+	public void bindView(View v, Context context, Cursor cursor) {
+		TextView cardNumber = (TextView) v.findViewById(R.id.cardNumber);
+		cardNumber.setText(cursor.getString(cursor.getColumnIndex(DbData.CARD_NUMBER)));
 
-			TextView expDate = (TextView) v.findViewById(R.id.cardExpDate);
-			expDate.setText(card.getExpDate());
-		}
-		return v;
+		TextView expDate = (TextView) v.findViewById(R.id.cardExpDate);
+		expDate.setText(cursor.getString(cursor.getColumnIndex(DbData.CARD_EXP_DATE)));
+	}
+
+	@Override
+	public View newView(Context context, Cursor cursor, ViewGroup parent) {
+		LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		return vi.inflate(R.layout.row_credit_card, null);
 	}
 
 }

@@ -35,13 +35,13 @@ public class DbData {
 	public static final String FILTER_LENGTH = "filter_length";
 
 	public static final String CREATE_TABLE_USER = String.format(
-			"Create table %s (%s int primary key, %s text, %s text, %s text, %s text, %s text, %s text, %s text)",
+			"Create table %s (%s integer primary key, %s text, %s text, %s text, %s text, %s text, %s text, %s text)",
 			TABLE_USER, U_ID, FIRST_NAME, LAST_NAME, ADDRESS_1, ADDRESS_2, CITY, STATE, ZIP);
 	public static final String CREATE_TABLE_CARDS = String.format(
-			"Create table %s (%s int primary key, %s text, %s text, %s text)", TABLE_CREDIT_CARD, C_ID, CARD_NUMBER,
+			"Create table %s (%s integer primary key, %s text, %s text, %s text)", TABLE_CREDIT_CARD, C_ID, CARD_NUMBER,
 			CARD_EXP_DATE, CARD_VERIFICATION_CODE);
 	public static final String CREATE_TABLE_FILTERS = String.format(
-			"Create table %s (%s int primary key, %s text, %s text, %s text)", TABLE_FILTER, F_ID, FILTER_NAME,
+			"Create table %s (%s integer primary key, %s text, %s text, %s text)", TABLE_FILTER, F_ID, FILTER_NAME,
 			FILTER_WIDTH, FILTER_HEIGHT, FILTER_LENGTH);
 
 	Context context;
@@ -115,7 +115,7 @@ public class DbData {
 	public void insertCreditCard(CreditCard creditCard) {
 		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(C_ID, creditCard.getId());
+
 		values.put(CARD_NUMBER, creditCard.getCardNumber());
 		values.put(CARD_EXP_DATE, creditCard.getExpDate());
 		values.put(CARD_VERIFICATION_CODE, creditCard.getCvc());
