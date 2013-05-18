@@ -2,6 +2,7 @@ package com.app.filterforget.domain;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
@@ -81,6 +82,12 @@ public class DbData {
 
 		db.update(TABLE_USER, values, BaseColumns._ID + "= 1", null);
 	}
+	
+	public Cursor getUser() {
+		db = dbHelper.getReadableDatabase(); 
+		Cursor cursor = db.query(TABLE_USER, null, null, null, null, null, U_ID + "= 1");
+		return cursor;
+	}
 
 	public void insertFilter(Filter filter) {
 		db = dbHelper.getWritableDatabase();
@@ -98,6 +105,12 @@ public class DbData {
 		db = dbHelper.getWritableDatabase();
 		db.delete(TABLE_FILTER, F_ID + "=" + filter.getId(), null);
 	}
+	
+	public Cursor getFilters(){
+		db = dbHelper.getReadableDatabase(); 
+		Cursor cursor = db.query(TABLE_FILTER, null, null, null, null, null, null);
+		return cursor;		
+	}
 
 	public void insertCreditCard(CreditCard creditCard) {
 		db = dbHelper.getWritableDatabase();
@@ -113,6 +126,12 @@ public class DbData {
 	public void deleteCreditCard(CreditCard creditCard) {
 		db = dbHelper.getReadableDatabase();
 		db.delete(TABLE_CREDIT_CARD, C_ID + "=" + creditCard.getId(), null);
+	}
+	
+	public Cursor getCreditCards() {
+		db = dbHelper.getReadableDatabase(); 
+		Cursor cursor = db.query(TABLE_CREDIT_CARD, null, null, null, null, null, null);
+		return cursor;		
 	}
 
 	class DbHelper extends SQLiteOpenHelper {
