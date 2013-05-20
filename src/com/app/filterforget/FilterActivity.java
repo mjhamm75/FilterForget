@@ -119,10 +119,10 @@ public class FilterActivity extends ContainerActivity {
 
 	private void createFilters() {
 		Date today = new Date();
-		filters.add(new Filter("Hall", "1", "1", "1", today));
-		filters.add(new Filter("Dining Room", "2", "2", "2", today));
-		filters.add(new Filter("Kitchen", "3", "3", "3", today));
-		filters.add(new Filter("Foyer", "4", "4", "4", today));
+		filters.add(new Filter("Hall", "1", "1", "1", today.toLocaleString()));
+		filters.add(new Filter("Dining Room", "2", "2", "2", today.toLocaleString()));
+		filters.add(new Filter("Kitchen", "3", "3", "3", today.toLocaleString()));
+		filters.add(new Filter("Foyer", "4", "4", "4", today.toLocaleString()));
 	}
 
 }

@@ -17,7 +17,7 @@ public class FilterSelectActivity extends ContainerActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select);
-		selectAdapter = new FilterSelectAdapter(context, R.layout.row_filter_select, filters);
+		selectAdapter = new FilterSelectAdapter(context, dbData.getFilters());
 		final ListView lv = (ListView) findViewById(R.id.list_view_select_filter);
 		lv.setAdapter(selectAdapter);
 		lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

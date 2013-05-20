@@ -33,6 +33,10 @@ public class DbData {
 	public static final String FILTER_WIDTH = "filter_width";
 	public static final String FILTER_HEIGHT = "filter_height";
 	public static final String FILTER_LENGTH = "filter_length";
+	public static final String FILTER_CHECKED = "filter_checked";	
+	public static final String FILTER_PRICE = "filter_price";	
+	public static final String FILTER_QUANTITY = "filter_quantity";	
+	public static final String FILTER_LAST_REPLACED = "filter_last_replaced";	
 
 	public static final String CREATE_TABLE_USER = String.format(
 			"Create table %s (%s integer primary key, %s text, %s text, %s text, %s text, %s text, %s text, %s text)",
@@ -42,7 +46,7 @@ public class DbData {
 			CARD_EXP_DATE, CARD_VERIFICATION_CODE);
 	public static final String CREATE_TABLE_FILTERS = String.format(
 			"Create table %s (%s integer primary key, %s text, %s text, %s text)", TABLE_FILTER, F_ID, FILTER_NAME,
-			FILTER_WIDTH, FILTER_HEIGHT, FILTER_LENGTH);
+			FILTER_WIDTH, FILTER_HEIGHT, FILTER_LENGTH, FILTER_CHECKED, FILTER_PRICE, FILTER_QUANTITY, FILTER_LAST_REPLACED);
 
 	Context context;
 	DbHelper dbHelper;
@@ -97,6 +101,10 @@ public class DbData {
 		values.put(FILTER_WIDTH, filter.getWidth());
 		values.put(FILTER_HEIGHT, filter.getHeight());
 		values.put(FILTER_LENGTH, filter.getLength());
+		values.put(FILTER_CHECKED, filter.getChecked());
+		values.put(FILTER_PRICE, filter.getPrice());
+		values.put(FILTER_QUANTITY, filter.getQuantity());
+		values.put(FILTER_LAST_REPLACED, filter.getLastReplaced());
 
 		db.insert(TABLE_FILTER, null, values);
 	}

@@ -13,7 +13,7 @@ public class Filter {
 	String height;
 	String price;
 	String quantity;
-	Date lastReplaced;
+	String lastReplaced;
 	boolean checked = false;
 
 	public Filter(String name, String length, String width, String height) {
@@ -23,12 +23,23 @@ public class Filter {
 		this.height = height;
 	}
 
-	public Filter(String name, String length, String width, String height, Date lastReplaced) {
+	public Filter(String name, String length, String width, String height, String lastReplaced) {
 		this.name = name;
 		this.length = length;
 		this.width = width;
 		this.height = height;
 		this.lastReplaced = lastReplaced;
+	}
+
+	public Filter(String name, String length, String width, String height, String price, String quantity, String lastReplaced, Boolean checked) {
+		this.name = name;
+		this.length = length;
+		this.width = width;
+		this.height = height;
+		this.price = price;
+		this.quantity = quantity;		
+		this.lastReplaced = lastReplaced;
+		this.checked = checked;
 	}
 	
 	public int getId(){
@@ -71,7 +82,7 @@ public class Filter {
 		this.height = height;
 	}
 
-	public Date getLastReplaced() {
+	public String getLastReplaced() {
 		return lastReplaced;
 	}
 
@@ -117,7 +128,7 @@ public class Filter {
 		return "Never Replaced";
 	}
 
-	public void setLastReplaced(Date lastReplaced) {
+	public void setLastReplaced(String lastReplaced) {
 		this.lastReplaced = lastReplaced;
 	}
 
