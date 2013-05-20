@@ -121,11 +121,12 @@ public class Filter {
 	}
 
 	public String getFormattedDate() {
-		if (getLastReplaced() != null) {
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			return sdf.format(getLastReplaced());
-		}
-		return "Never Replaced";
+//		if (getLastReplaced() != null) {
+//			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//			return sdf.format(getLastReplaced());
+//		}
+//		return "Never Replaced";
+		return getLastReplaced();
 	}
 
 	public void setLastReplaced(String lastReplaced) {

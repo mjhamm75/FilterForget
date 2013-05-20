@@ -35,5 +35,4 @@ public class CreditCardAdapter extends CursorAdapter {
 		LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		return vi.inflate(R.layout.row_credit_card, null);
 	}
-
 }

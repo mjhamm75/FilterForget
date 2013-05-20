@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -73,8 +74,9 @@ public class InfoActivity extends ContainerActivity {
 						EditText expDate = (EditText) dialog.findViewById(R.id.expDate);
 						String expirationDate = expDate.getText().toString();
 
-						dbData.insertCreditCard(new CreditCard(number, expirationDate, ""));
-						cardAdapter.notifyDataSetChanged();
+						dbData.insertCreditCard(new CreditCard(number, expirationDate, ""));						
+						Cursor cursor = dbData.getCreditCards();
+						cardAdapter.changeCursor(cursor);
 
 						dialog.dismiss();
 
