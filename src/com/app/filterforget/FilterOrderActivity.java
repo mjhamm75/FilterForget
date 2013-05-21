@@ -15,7 +15,7 @@ public class FilterOrderActivity extends ContainerActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order);
 		
-		adapter = new FilterOrderAdapter(context, R.layout.row_filter_order, getSelectedFilters());
+		adapter = new FilterOrderAdapter(context, dbData.getFilters());
 		ListView filterList = (ListView) findViewById(R.id.list_view_order_filter);
 		filterList.setDivider(null);
 		View footer = getLayoutInflater().inflate(R.layout.activity_order_footer, null);

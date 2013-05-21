@@ -1,7 +1,5 @@
 package com.app.filterforget;
 
-import java.util.Date;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +38,7 @@ public class FilterActivity extends ContainerActivity {
 				singleDelete.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						filters.remove(filterPosition);
+						//filters.remove(filterPosition);
 						filterAdapter.notifyDataSetChanged();
 						dialog.dismiss();
 					}
@@ -57,8 +55,6 @@ public class FilterActivity extends ContainerActivity {
 				dialog.show();
 			}
 		});
-
-		createFilters();
 
 		Button addFilter = (Button) findViewById(R.id.addFilter);
 		addFilter.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +78,7 @@ public class FilterActivity extends ContainerActivity {
 						String height = filterHeight.getSelectedItem().toString();
 						String name = filterName.getText().toString();
 						Filter filter = new Filter(name, length, width, height);
-						filters.add(filter);
+						//filters.add(filter);
 						filterAdapter.notifyDataSetChanged();
 						dialog.dismiss();
 					}
@@ -111,17 +107,8 @@ public class FilterActivity extends ContainerActivity {
 			}
 		});
 
-		filterAdapter = new FilterAdapter(context, R.layout.row_activity_filter, filters);
+		filterAdapter = new FilterAdapter(context, dbData.getFilters());
 		filterList.setAdapter(filterAdapter);
 
 	}
-
-	private void createFilters() {
-		Date today = new Date();
-		filters.add(new Filter("Hall", "1", "1", "1", today.toLocaleString()));
-		filters.add(new Filter("Dining Room", "2", "2", "2", today.toLocaleString()));
-		filters.add(new Filter("Kitchen", "3", "3", "3", today.toLocaleString()));
-		filters.add(new Filter("Foyer", "4", "4", "4", today.toLocaleString()));
-	}
-
 }

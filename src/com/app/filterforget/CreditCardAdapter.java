@@ -18,7 +18,6 @@ public class CreditCardAdapter extends CursorAdapter {
 		super(context, cursor, true);
 		this.context = context;
 		this.cursor = cursor;
-		cursor.moveToFirst();
 	}
 
 	@Override
