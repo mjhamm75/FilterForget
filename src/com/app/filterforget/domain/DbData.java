@@ -56,8 +56,8 @@ public class DbData {
 	public DbData(Context context) {
 		this.context = context;
 		dbHelper = new DbHelper();
-		db = dbHelper.getWritableDatabase();
-		dbHelper.onUpgrade(db, 2, 3);
+//		db = dbHelper.getWritableDatabase();
+//		dbHelper.onUpgrade(db, 2, 3);
 	}
 
 	public void insertUser(User user) {
@@ -99,7 +99,6 @@ public class DbData {
 	public void insertFilter(Filter filter) {
 		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(F_ID, filter.getId());
 		values.put(FILTER_NAME, filter.getName());
 		values.put(FILTER_WIDTH, filter.getWidth());
 		values.put(FILTER_HEIGHT, filter.getHeight());

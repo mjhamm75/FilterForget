@@ -11,12 +11,10 @@ import android.widget.TextView;
 import com.app.filterforget.domain.DbData;
 
 public class CreditCardAdapter extends CursorAdapter {
-	Context context;
 	Cursor cursor;
 
 	public CreditCardAdapter(Context context, Cursor cursor) {
 		super(context, cursor, true);
-		this.context = context;
 		this.cursor = cursor;
 	}
 

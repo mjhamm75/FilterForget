@@ -30,7 +30,6 @@ public class FilterActivity extends ContainerActivity {
 		filterList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				final int filterPosition = position;
 				final Dialog dialog = new Dialog(FilterActivity.this);
 				dialog.setContentView(R.layout.filter_single);
 				dialog.setTitle(R.string.delete_filter);
@@ -80,7 +79,7 @@ public class FilterActivity extends ContainerActivity {
 						String name = filterName.getText().toString();
 						Filter filter = new Filter(name, length, width, height, "1", "1", "1", false);
 						dbData.insertFilter(filter);
-						Cursor cursor = dbData.getCreditCards();
+						Cursor cursor = dbData.getFilters();
 						filterAdapter.changeCursor(cursor);
 						dialog.dismiss();
 					}
@@ -108,7 +107,6 @@ public class FilterActivity extends ContainerActivity {
 				FilterActivity.this.startActivity(orderIntent);
 			}
 		});
-
 		filterAdapter = new FilterAdapter(context, dbData.getFilters());
 		filterList.setAdapter(filterAdapter);
 
