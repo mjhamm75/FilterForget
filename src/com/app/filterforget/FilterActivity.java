@@ -3,6 +3,7 @@ package com.app.filterforget;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -77,9 +78,10 @@ public class FilterActivity extends ContainerActivity {
 						String width = filterWidth.getSelectedItem().toString();
 						String height = filterHeight.getSelectedItem().toString();
 						String name = filterName.getText().toString();
-						Filter filter = new Filter(name, length, width, height);
-						//filters.add(filter);
-						filterAdapter.notifyDataSetChanged();
+						Filter filter = new Filter(name, length, width, height, "1", "1", "1", false);
+						dbData.insertFilter(filter);
+						Cursor cursor = dbData.getCreditCards();
+						filterAdapter.changeCursor(cursor);
 						dialog.dismiss();
 					}
 				});

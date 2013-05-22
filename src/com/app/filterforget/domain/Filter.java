@@ -40,6 +40,7 @@ public class Filter {
 		this.quantity = quantity;		
 		this.lastReplaced = lastReplaced;
 		this.checked = checked;
+		this.quantity = quantity;
 	}
 	
 	public int getId(){

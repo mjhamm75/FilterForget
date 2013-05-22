@@ -33,20 +33,21 @@ public class DbData {
 	public static final String FILTER_WIDTH = "filter_width";
 	public static final String FILTER_HEIGHT = "filter_height";
 	public static final String FILTER_LENGTH = "filter_length";
-	public static final String FILTER_CHECKED = "filter_checked";	
-	public static final String FILTER_PRICE = "filter_price";	
-	public static final String FILTER_QUANTITY = "filter_quantity";	
-	public static final String FILTER_LAST_REPLACED = "filter_last_replaced";	
+	public static final String FILTER_CHECKED = "filter_checked";
+	public static final String FILTER_PRICE = "filter_price";
+	public static final String FILTER_QUANTITY = "filter_quantity";
+	public static final String FILTER_LAST_REPLACED = "filter_last_replaced";
 
 	public static final String CREATE_TABLE_USER = String.format(
 			"Create table %s (%s integer primary key, %s text, %s text, %s text, %s text, %s text, %s text, %s text)",
 			TABLE_USER, U_ID, FIRST_NAME, LAST_NAME, ADDRESS_1, ADDRESS_2, CITY, STATE, ZIP);
 	public static final String CREATE_TABLE_CARDS = String.format(
-			"Create table %s (%s integer primary key, %s text, %s text, %s text)", TABLE_CREDIT_CARD, C_ID, CARD_NUMBER,
-			CARD_EXP_DATE, CARD_VERIFICATION_CODE);
-	public static final String CREATE_TABLE_FILTERS = String.format(
-			"Create table %s (%s integer primary key, %s text, %s text, %s text)", TABLE_FILTER, F_ID, FILTER_NAME,
-			FILTER_WIDTH, FILTER_HEIGHT, FILTER_LENGTH, FILTER_CHECKED, FILTER_PRICE, FILTER_QUANTITY, FILTER_LAST_REPLACED);
+			"Create table %s (%s integer primary key, %s text, %s text, %s text)", TABLE_CREDIT_CARD, C_ID,
+			CARD_NUMBER, CARD_EXP_DATE, CARD_VERIFICATION_CODE);
+	public static final String CREATE_TABLE_FILTERS = String
+			.format("Create table %s (%s integer primary key, %s text, %s text, %s text, %s text, %s text, %s text, %s text, %s text)",
+					TABLE_FILTER, F_ID, FILTER_NAME, FILTER_WIDTH, FILTER_HEIGHT, FILTER_LENGTH, FILTER_CHECKED,
+					FILTER_PRICE, FILTER_QUANTITY, FILTER_LAST_REPLACED);
 
 	Context context;
 	DbHelper dbHelper;
@@ -55,6 +56,8 @@ public class DbData {
 	public DbData(Context context) {
 		this.context = context;
 		dbHelper = new DbHelper();
+		db = dbHelper.getWritableDatabase();
+		dbHelper.onUpgrade(db, 2, 3);
 	}
 
 	public void insertUser(User user) {
@@ -86,9 +89,9 @@ public class DbData {
 
 		db.update(TABLE_USER, values, BaseColumns._ID + "= 1", null);
 	}
-	
+
 	public Cursor getUser() {
-		db = dbHelper.getReadableDatabase(); 
+		db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_USER, null, null, null, null, null, U_ID + "= 1");
 		return cursor;
 	}
@@ -113,11 +116,11 @@ public class DbData {
 		db = dbHelper.getWritableDatabase();
 		db.delete(TABLE_FILTER, F_ID + "=" + filter.getId(), null);
 	}
-	
-	public Cursor getFilters(){
-		db = dbHelper.getReadableDatabase(); 
+
+	public Cursor getFilters() {
+		db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_FILTER, null, null, null, null, null, null);
-		return cursor;		
+		return cursor;
 	}
 
 	public void insertCreditCard(CreditCard creditCard) {
@@ -135,11 +138,11 @@ public class DbData {
 		db = dbHelper.getReadableDatabase();
 		db.delete(TABLE_CREDIT_CARD, C_ID + "=" + creditCard.getId(), null);
 	}
-	
+
 	public Cursor getCreditCards() {
-		db = dbHelper.getReadableDatabase(); 
+		db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_CREDIT_CARD, null, null, null, null, null, null);
-		return cursor;		
+		return cursor;
 	}
 
 	class DbHelper extends SQLiteOpenHelper {
@@ -157,9 +160,9 @@ public class DbData {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			db.execSQL("drop if exists " + TABLE_USER);
-			db.execSQL("drop if exists " + TABLE_CREDIT_CARD);
-			db.execSQL("drop if exists " + TABLE_FILTER);
+			db.execSQL("drop TABLE " + TABLE_USER + ";");
+			db.execSQL("drop TABLE " + TABLE_CREDIT_CARD + ";");
+			db.execSQL("drop TABLE " + TABLE_FILTER + ";");
 			onCreate(db);
 		}
 
