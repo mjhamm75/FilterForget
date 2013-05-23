@@ -111,9 +111,9 @@ public class DbData {
 		db.insert(TABLE_FILTER, null, values);
 	}
 
-	public void deleteFilter(Filter filter) {
+	public void deleteFilter(long id) {
 		db = dbHelper.getWritableDatabase();
-		db.delete(TABLE_FILTER, F_ID + "=" + filter.getId(), null);
+		db.delete(TABLE_FILTER, F_ID + "=" + id, null);
 	}
 
 	public Cursor getFilters() {

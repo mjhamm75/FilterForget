@@ -30,6 +30,7 @@ public class FilterActivity extends ContainerActivity {
 		filterList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				final long _id = id;
 				final Dialog dialog = new Dialog(FilterActivity.this);
 				dialog.setContentView(R.layout.filter_single);
 				dialog.setTitle(R.string.delete_filter);
@@ -38,8 +39,10 @@ public class FilterActivity extends ContainerActivity {
 				singleDelete.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						//filters.remove(filterPosition);
-						filterAdapter.notifyDataSetChanged();
+						
+						dbData.deleteFilter(_id);
+						Cursor cursor = dbData.getFilters();
+						filterAdapter.changeCursor(cursor);
 						dialog.dismiss();
 					}
 				});
