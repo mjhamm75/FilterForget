@@ -138,6 +138,7 @@ public class InfoActivity extends ContainerActivity {
 						User.USER.setCity(c);
 						User.USER.setState(s);
 						User.USER.setZipcode(zip);
+						dbData.updateUser(User.USER);
 						paintInfo();
 						dialog.dismiss();
 					}

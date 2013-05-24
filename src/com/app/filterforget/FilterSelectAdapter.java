@@ -13,7 +13,6 @@ import android.widget.CursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.app.filterforget.domain.DbData;
 import com.app.filterforget.domain.Filter;
 
 public class FilterSelectAdapter extends CursorAdapter {
@@ -27,7 +26,7 @@ public class FilterSelectAdapter extends CursorAdapter {
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		CheckBox box = (CheckBox) view.findViewById(R.id.selectFilterCheck);
-		final Filter filter = cursorToFilter(cursor);
+		final Filter filter = Filter.cursorToFilter(cursor);
 		box.setChecked(filter.getChecked());
 		box.setOnClickListener(new OnClickListener() {
 			@Override
@@ -59,19 +58,5 @@ public class FilterSelectAdapter extends CursorAdapter {
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
 		LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		return vi.inflate(R.layout.row_filter_select, null);
-	}
-	
-	public Filter cursorToFilter(Cursor cursor) {
-		String name = cursor.getString(cursor.getColumnIndex(DbData.FILTER_NAME));
-		String length = cursor.getString(cursor.getColumnIndex(DbData.FILTER_LENGTH));
-		String width= cursor.getString(cursor.getColumnIndex(DbData.FILTER_WIDTH));
-		String height= cursor.getString(cursor.getColumnIndex(DbData.FILTER_HEIGHT));
-		String price = cursor.getString(cursor.getColumnIndex(DbData.FILTER_PRICE));
-		String quantity = cursor.getString(cursor.getColumnIndex(DbData.FILTER_QUANTITY));
-		String lastReplaced = cursor.getString(cursor.getColumnIndex(DbData.FILTER_LAST_REPLACED));
-		String checked = cursor.getString(cursor.getColumnIndex(DbData.FILTER_CHECKED));
-		
-		Filter filter = new Filter(name, length, width, height, price, quantity, lastReplaced, checked.contains("true") ? true : false);
-		return filter;
 	}
 }

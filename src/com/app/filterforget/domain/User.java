@@ -1,5 +1,7 @@
 package com.app.filterforget.domain;
 
+import android.database.Cursor;
+
 public enum User {
 	USER("", "", "", "", "", "", "");
 	private String firstName;
@@ -74,5 +76,14 @@ public enum User {
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+	
+	public static void populateUserFromDb(Cursor cursor) {
+		User.USER.setFirstName(cursor.getString(cursor.getColumnIndex(DbData.FIRST_NAME)));
+		User.USER.setLastName(cursor.getString(cursor.getColumnIndex(DbData.LAST_NAME)));
+		User.USER.setAddress1(cursor.getString(cursor.getColumnIndex(DbData.ADDRESS_1)));
+		User.USER.setCity(cursor.getString(cursor.getColumnIndex(DbData.CITY)));
+		User.USER.setState(cursor.getString(cursor.getColumnIndex(DbData.STATE)));
+		User.USER.setZipcode(cursor.getString(cursor.getColumnIndex(DbData.ZIP)));
 	}
 }

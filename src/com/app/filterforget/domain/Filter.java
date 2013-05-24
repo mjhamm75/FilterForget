@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import android.database.Cursor;
+
 public class Filter {
 	int id;
 	String name;
@@ -136,5 +138,19 @@ public class Filter {
 
 	public String getFilterSize() {
 		return getWidth() + "x" + getLength() + "x" + getHeight();
+	}
+	
+	public static Filter cursorToFilter(Cursor cursor) {
+		String name = cursor.getString(cursor.getColumnIndex(DbData.FILTER_NAME));
+		String length = cursor.getString(cursor.getColumnIndex(DbData.FILTER_LENGTH));
+		String width= cursor.getString(cursor.getColumnIndex(DbData.FILTER_WIDTH));
+		String height= cursor.getString(cursor.getColumnIndex(DbData.FILTER_HEIGHT));
+		String price = cursor.getString(cursor.getColumnIndex(DbData.FILTER_PRICE));
+		String quantity = cursor.getString(cursor.getColumnIndex(DbData.FILTER_QUANTITY));
+		String lastReplaced = cursor.getString(cursor.getColumnIndex(DbData.FILTER_LAST_REPLACED));
+		String checked = cursor.getString(cursor.getColumnIndex(DbData.FILTER_CHECKED));
+		
+		Filter filter = new Filter(name, length, width, height, price, quantity, lastReplaced, checked.contains("true") ? true : false);
+		return filter;
 	}
 }
