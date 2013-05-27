@@ -34,7 +34,7 @@ public class FilterOrderActivity extends ContainerActivity {
 		cancel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				System.out.println("CANCEL");
+				finish();
 			}
 		});
 	}
