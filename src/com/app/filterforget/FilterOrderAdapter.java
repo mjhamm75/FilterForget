@@ -1,7 +1,5 @@
 package com.app.filterforget;
 
-import com.app.filterforget.domain.DbData;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
@@ -10,21 +8,25 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
+import com.app.filterforget.domain.Filter;
+
 public class FilterOrderAdapter extends CursorAdapter {
-	Cursor cursor;
 
 	public FilterOrderAdapter(Context context,Cursor cursor) {
 		super(context, cursor, true);
-		this.cursor = cursor;
 	}
 
 	@Override
-	public void bindView(View v, Context context, Cursor cursor) {
-		TextView filterName = (TextView) v.findViewById(R.id.orderFilterName);
-		filterName.setText(cursor.getString(cursor.getColumnIndex(DbData.FILTER_NAME)));
+	public void bindView(View view, Context context, Cursor cursor) {
+		final Filter filter = Filter.cursorToFilter(cursor);
+		
+		TextView filterName = (TextView) view.findViewById(R.id.orderFilterName);
+		filterName.setText(filter.getName());
 
-		TextView filterPrice= (TextView) v.findViewById(R.id.filterName);
-		filterPrice.setText(cursor.getString(cursor.getColumnIndex(DbData.FILTER_PRICE)));
+//		TextView filterPrice= (TextView) view.findViewById(R.id.filterName);
+//		filterPrice.setText(filter.getPrice());
+		
+		System.out.println("Hello");
 		
 	}
 

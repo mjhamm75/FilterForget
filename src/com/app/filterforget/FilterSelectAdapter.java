@@ -16,11 +16,9 @@ import android.widget.TextView;
 import com.app.filterforget.domain.Filter;
 
 public class FilterSelectAdapter extends CursorAdapter {
-	Context context;
 
 	public FilterSelectAdapter(Context context, Cursor cursor) {
 		super(context, cursor, true);
-		this.context = context;
 	}
 
 	@Override
