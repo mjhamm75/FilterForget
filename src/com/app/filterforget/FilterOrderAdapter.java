@@ -23,10 +23,8 @@ public class FilterOrderAdapter extends CursorAdapter {
 		TextView filterName = (TextView) view.findViewById(R.id.orderFilterName);
 		filterName.setText(filter.getName());
 
-//		TextView filterPrice= (TextView) view.findViewById(R.id.filterName);
-//		filterPrice.setText(filter.getPrice());
-		
-		System.out.println("Hello");
+		TextView filterPrice = (TextView) view.findViewById(R.id.orderFilterPrice);
+		filterPrice.setText(filter.getPrice());
 		
 	}
 
