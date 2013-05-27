@@ -26,7 +26,7 @@ public class FilterOrderActivity extends ContainerActivity {
 		order.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new LongRunningIO();
+				new LongRunningIO().execute();
 			}
 		});
 

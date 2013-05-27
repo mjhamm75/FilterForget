@@ -1,5 +1,10 @@
 package com.app.filterforget;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -17,15 +22,52 @@ public class LongRunningIO extends AsyncTask<Void, Void, String> {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpContext localContext = new BasicHttpContext();
 		HttpGet httpGet = new HttpGet("http://99.44.242.76:3000/users.json");
-		String text = null;
+		HttpEntity entity;
 		try {
 			HttpResponse response = httpClient.execute(httpGet, localContext);
-			HttpEntity entity = response.getEntity();
-//			text = getASCIIContentFromEntity(entity);
+			entity = response.getEntity();
 		} catch (Exception e) {
 			return e.getLocalizedMessage();
 		}
-		return text;
+		try {
+			System.out.println(getStringFromInputStream(entity.getContent()));
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "Done";
+
+	}
+
+	private static String getStringFromInputStream(InputStream is) {
+
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+
+		String line;
+		try {
+
+			br = new BufferedReader(new InputStreamReader(is));
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return sb.toString();
 
 	}
 
