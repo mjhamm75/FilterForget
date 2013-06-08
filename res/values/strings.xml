@@ -31,6 +31,9 @@
     <string name="personal_info">Personal Info</string>
     <string name="back">Back</string>
     <string name="add_order_date">Filter Order Date</string>
+    <string name="radio_specific_date">Order Date</string>
+    <string name="radio_repeat_date">Repeat Date</string>
+    <string name="date_prompt">Pick Date</string>
     
 
     <string-array name="filter_array">

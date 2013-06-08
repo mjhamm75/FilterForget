@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,8 @@ public class InfoActivity extends ContainerActivity {
 				dialog.setContentView(R.layout.dialog_add_order_date);
 				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				dialog.setTitle(R.string.add_order_date);
+				
+				RadioGroup recurrenceDate = (RadioGroup) dialog.findViewById(R.id.radio_date);
 				
 				Button addOrderDate = (Button) dialog.findViewById(R.id.buttonAddDate);
 				addOrderDate.setOnClickListener(new View.OnClickListener() {
