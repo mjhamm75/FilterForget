@@ -34,7 +34,9 @@
     <string name="radio_specific_date">Order Date</string>
     <string name="radio_repeat_date">Repeat Date</string>
     <string name="date_prompt">Pick Date</string>
-    
+    <string name="order_specific_date">Choose Specific Date</string>
+    <string name="order_week">Week</string>
+    <string name="order_day">Day</string>
 
     <string-array name="filter_array">
         <item>Discount - 7.95</item>
@@ -69,7 +71,52 @@
         <item>2</item>
         <item>3</item>
     </string-array>
-    
+    <string-array name="date_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+    </string-array>
+    <string-array name="week_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="day_array">
+        <item>Monday</item>
+        <item>Teusday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
     <color name="green">#60C160</color>
 
 </resources>

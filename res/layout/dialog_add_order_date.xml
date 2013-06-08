@@ -18,48 +18,57 @@
             android:checked="true"
             android:text="@string/radio_specific_date" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/order_specific_date" />
+
+        <Spinner
+            android:id="@+id/spinner_pick_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:entries="@array/date_array"
+            android:prompt="@string/date_prompt" />
+
         <RadioButton
             android:id="@+id/radio_repeat_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_repeat_date" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/order_week" />
+
+        <Spinner
+            android:id="@+id/spinner_pick_repeat_week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:entries="@array/week_array"
+            android:prompt="@string/date_prompt" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/order_day" />
+
+        <Spinner
+            android:id="@+id/spinner_pick_repeat_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:entries="@array/day_array"
+            android:prompt="@string/date_prompt" />
     </RadioGroup>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_order_date" />
-
-    <Spinner
-        android:id="@+id/spinner_pick_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/width_array"
-        android:prompt="@string/date_prompt" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_order_date" />
-
-    <Spinner
-        android:id="@+id/spinner_pick_repeat_week"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/width_array"
-        android:prompt="@string/date_prompt" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_order_date" />
-
-    <Spinner
-        android:id="@+id/spinner_pick_repeat_day"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/width_array"
-        android:prompt="@string/date_prompt" />
 
     <LinearLayout
         android:layout_width="fill_parent"

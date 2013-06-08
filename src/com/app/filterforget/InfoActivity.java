@@ -16,7 +16,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.RadioGroup;
+import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class InfoActivity extends ContainerActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
 		cards = new ArrayList<CreditCard>();
-		
+
 		Button filterOrderActivity = (Button) findViewById(R.id.button_add_order_date);
 		filterOrderActivity.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -42,13 +43,43 @@ public class InfoActivity extends ContainerActivity {
 				dialog.setContentView(R.layout.dialog_add_order_date);
 				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				dialog.setTitle(R.string.add_order_date);
+
+				final Spinner specificSpinner = (Spinner)dialog.findViewById(R.id.spinner_pick_date);
+				String date = specificSpinner.getSelectedItem().toString();
 				
-				RadioGroup recurrenceDate = (RadioGroup) dialog.findViewById(R.id.radio_date);
+				final Spinner weekSpinner = (Spinner)dialog.findViewById(R.id.spinner_pick_repeat_week);
+				weekSpinner.setEnabled(false);
+				String week = weekSpinner.getSelectedItem().toString();
 				
+				final Spinner daySpinner = (Spinner)dialog.findViewById(R.id.spinner_pick_repeat_day);
+				daySpinner.setEnabled(false);
+				String day = daySpinner.getSelectedItem().toString();
+				
+				RadioButton specificDate = (RadioButton) dialog.findViewById(R.id.radio_specific_date);
+				specificDate.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						specificSpinner.setEnabled(true);
+						weekSpinner.setEnabled(false);
+						daySpinner.setEnabled(false);
+					}
+				});
+
+				RadioButton repeatDate = (RadioButton) dialog.findViewById(R.id.radio_repeat_date);
+				repeatDate.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						specificSpinner.setEnabled(false);
+						weekSpinner.setEnabled(true);
+						daySpinner.setEnabled(true);
+					}
+				});
+
 				Button addOrderDate = (Button) dialog.findViewById(R.id.buttonAddDate);
 				addOrderDate.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
+						
 						Toast.makeText(InfoActivity.this, "Order Date Changed", Toast.LENGTH_LONG).show();
 						dialog.dismiss();
 					}
@@ -62,11 +93,11 @@ public class InfoActivity extends ContainerActivity {
 					}
 				});
 				dialog.show();
-				
+
 				dialog.show();
 			}
 		});
-		
+
 		Button addCreditCard = (Button) findViewById(R.id.button_add_card);
 		addCreditCard.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -108,7 +139,7 @@ public class InfoActivity extends ContainerActivity {
 						EditText expDate = (EditText) dialog.findViewById(R.id.expDate);
 						String expirationDate = expDate.getText().toString();
 
-						dbData.insertCreditCard(new CreditCard(number, expirationDate, ""));						
+						dbData.insertCreditCard(new CreditCard(number, expirationDate, ""));
 						Cursor cursor = dbData.getCreditCards();
 						cardAdapter.changeCursor(cursor);
 
@@ -139,23 +170,22 @@ public class InfoActivity extends ContainerActivity {
 
 				final EditText firstName = (EditText) dialog.findViewById(R.id.nameFirstAdd);
 				firstName.setText(User.USER.getFirstName());
-				
+
 				final EditText lastName = (EditText) dialog.findViewById(R.id.nameLastAdd);
 				lastName.setText(User.USER.getLastName());
-				
+
 				final EditText address = (EditText) dialog.findViewById(R.id.addressAdd);
 				address.setText(User.USER.getAddress1());
 
 				final EditText city = (EditText) dialog.findViewById(R.id.cityAdd);
 				city.setText(User.USER.getCity());
-				
+
 				final EditText state = (EditText) dialog.findViewById(R.id.stateAdd);
 				state.setText(User.USER.getState());
-				
+
 				final EditText zipcode = (EditText) dialog.findViewById(R.id.zipcodeAdd);
 				zipcode.setText(User.USER.getZipcode());
-				
-				
+
 				Button addEditedInfo = (Button) dialog.findViewById(R.id.buttonAddInfo);
 				addEditedInfo.setOnClickListener(new View.OnClickListener() {
 					@Override
