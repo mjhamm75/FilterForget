@@ -2,11 +2,8 @@ package com.app.filterforget;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 
 public class FilterOrderPopup extends Activity {
@@ -15,9 +12,6 @@ public class FilterOrderPopup extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		IntentFilter filter = new IntentFilter(ACTION);
-		this.registerReceiver(mReceivedSMSReceiver, filter);
 		displayAlert();
 	}
 
@@ -27,6 +21,8 @@ public class FilterOrderPopup extends Activity {
 				.setPositiveButton("Order Now", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
+						Intent orderIntent = new Intent(FilterOrderPopup.this, FilterSelectActivity.class);
+						FilterOrderPopup.this.startActivity(orderIntent);
 						finish();
 					}
 				}).setNegativeButton("Wait", new DialogInterface.OnClickListener() {
@@ -38,17 +34,4 @@ public class FilterOrderPopup extends Activity {
 		AlertDialog alert = builder.create();
 		alert.show();
 	}
-
-	private final BroadcastReceiver mReceivedSMSReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-//			String action = intent.getAction();
-//
-//			if (ACTION.equals(action)) {
-//				// your SMS processing code
-//				displayAlert();
-//			}
-		}
-	};
-
 }

@@ -94,6 +94,7 @@ public class InfoActivity extends ContainerActivity {
 				addDateCancel.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
+						
 						dialog.dismiss();
 					}
 				});

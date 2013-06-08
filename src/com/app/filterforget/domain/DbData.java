@@ -56,8 +56,8 @@ public class DbData {
 	public DbData(Context context) {
 		this.context = context;
 		dbHelper = new DbHelper();
-//		db = dbHelper.getWritableDatabase();
-//		dbHelper.onUpgrade(db, 2, 3);
+		// db = dbHelper.getWritableDatabase();
+		// dbHelper.onUpgrade(db, 2, 3);
 	}
 
 	public void insertUser(User user) {
@@ -73,6 +73,7 @@ public class DbData {
 		values.put(ZIP, user.getZipcode());
 
 		db.insert(TABLE_USER, null, values);
+		db.close();
 	}
 
 	public void updateUser(User user) {
@@ -88,6 +89,7 @@ public class DbData {
 		values.put(ZIP, user.getZipcode());
 
 		db.update(TABLE_USER, values, BaseColumns._ID + "= 1", null);
+		db.close();
 	}
 
 	public Cursor getUser() {
@@ -109,11 +111,13 @@ public class DbData {
 		values.put(FILTER_LAST_REPLACED, filter.getLastReplaced());
 
 		db.insert(TABLE_FILTER, null, values);
+		db.close();
 	}
 
 	public void deleteFilter(long id) {
 		db = dbHelper.getWritableDatabase();
 		db.delete(TABLE_FILTER, F_ID + "=" + id, null);
+		db.close();
 	}
 
 	public Cursor getFilters() {
@@ -131,11 +135,13 @@ public class DbData {
 		values.put(CARD_VERIFICATION_CODE, creditCard.getCvc());
 
 		db.insert(TABLE_CREDIT_CARD, null, values);
+		db.close();
 	}
 
 	public void deleteCreditCard(CreditCard creditCard) {
 		db = dbHelper.getReadableDatabase();
 		db.delete(TABLE_CREDIT_CARD, C_ID + "=" + creditCard.getId(), null);
+		db.close();
 	}
 
 	public Cursor getCreditCards() {

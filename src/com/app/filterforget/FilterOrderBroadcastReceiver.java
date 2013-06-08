@@ -19,23 +19,19 @@ public class FilterOrderBroadcastReceiver extends BroadcastReceiver {
 
 	public void setAlarmByDay(Context context, String dayOfMonth) {
 		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		Intent intent = new Intent(context, FilterOrderBroadcastReceiver.class);
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.DAY_OF_MONTH, Integer.valueOf(dayOfMonth));
+		Intent intent = new Intent(context, FilterOrderBroadcastReceiver.class);		
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
-		// After after 5 seconds
-		am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 5, pi);
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.SECOND, Integer.valueOf(dayOfMonth));
+		am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
 	}
 
 	public void setAlarmByWeek(Context context, String week, String day) {
 		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		Intent intent = new Intent(context, FilterOrderBroadcastReceiver.class);
-		Calendar calendarWake = Calendar.getInstance();
-		calendarWake.set(Calendar.WEEK_OF_MONTH, Integer.valueOf(week));
-		Calendar calendarSleep = Calendar.getInstance();
-		
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
-		// After after 5 seconds
-		am.setRepeating(AlarmManager.RTC_WAKEUP, calendarWake.getTimeInMillis(), 1000 * 5, pi);
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.SECOND, Integer.valueOf(week));
+		am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
 	}
 }
