@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,17 +45,16 @@ public class InfoActivity extends ContainerActivity {
 				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				dialog.setTitle(R.string.add_order_date);
 
-				final Spinner specificSpinner = (Spinner)dialog.findViewById(R.id.spinner_pick_date);
-				String date = specificSpinner.getSelectedItem().toString();
-				
-				final Spinner weekSpinner = (Spinner)dialog.findViewById(R.id.spinner_pick_repeat_week);
-				weekSpinner.setEnabled(false);
-				String week = weekSpinner.getSelectedItem().toString();
-				
-				final Spinner daySpinner = (Spinner)dialog.findViewById(R.id.spinner_pick_repeat_day);
-				daySpinner.setEnabled(false);
-				String day = daySpinner.getSelectedItem().toString();
-				
+				final Spinner specificSpinner = (Spinner) dialog.findViewById(R.id.spinner_pick_date);
+
+				final Spinner weekSpinner = (Spinner) dialog.findViewById(R.id.spinner_pick_repeat_week);
+				weekSpinner.setEnabled(false);				
+
+				final Spinner daySpinner = (Spinner) dialog.findViewById(R.id.spinner_pick_repeat_day);
+				daySpinner.setEnabled(false);				
+
+				final RadioGroup radioGroup = (RadioGroup) dialog.findViewById(R.id.radio_date);
+
 				RadioButton specificDate = (RadioButton) dialog.findViewById(R.id.radio_specific_date);
 				specificDate.setOnClickListener(new View.OnClickListener() {
 					@Override
@@ -74,11 +74,19 @@ public class InfoActivity extends ContainerActivity {
 						daySpinner.setEnabled(true);
 					}
 				});
+				
 
 				Button addOrderDate = (Button) dialog.findViewById(R.id.buttonAddDate);
 				addOrderDate.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
+						int index = radioGroup.indexOfChild(dialog.findViewById(radioGroup.getCheckedRadioButtonId()));
+						if (index == 0) {
+							System.out.println(specificSpinner.getSelectedItem().toString());
+						} else if (index == 3) {
+							System.out.println(weekSpinner.getSelectedItem().toString());
+							System.out.println(daySpinner.getSelectedItem().toString());
+						}
 						
 						Toast.makeText(InfoActivity.this, "Order Date Changed", Toast.LENGTH_LONG).show();
 						dialog.dismiss();
