@@ -30,6 +30,7 @@
     <string name="edit_info">Edit Personal Info</string>
     <string name="personal_info">Personal Info</string>
     <string name="back">Back</string>
+    <string name="add_order_date">Filter Order Date</string>
     
 
     <string-array name="filter_array">

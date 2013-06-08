@@ -156,4 +156,12 @@
         android:text="@string/add_card" >
     </Button>
 
+    <Button
+        android:id="@+id/button_add_order_date"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="@string/add_order_date" >
+    </Button>
+
 </LinearLayout>

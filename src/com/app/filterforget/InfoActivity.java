@@ -30,9 +30,20 @@ public class InfoActivity extends ContainerActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_info);
-
 		cards = new ArrayList<CreditCard>();
-
+		
+		Button filterOrderActivity = (Button) findViewById(R.id.button_add_order_date);
+		filterOrderActivity.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final Dialog dialog = new Dialog(InfoActivity.this);
+				dialog.setContentView(R.layout.dialog_add_order_date);
+				dialog.getWindow().setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				dialog.setTitle(R.string.add_order_date);
+				dialog.show();
+			}
+		});
+		
 		Button addCreditCard = (Button) findViewById(R.id.button_add_card);
 		addCreditCard.setOnClickListener(new View.OnClickListener() {
 			@Override
