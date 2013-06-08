@@ -20,7 +20,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.filterforget.domain.CreditCard;
 import com.app.filterforget.domain.User;
@@ -80,15 +79,13 @@ public class InfoActivity extends ContainerActivity {
 				addOrderDate.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
+						FilterOrderBroadcastReceiver br = new FilterOrderBroadcastReceiver();
 						int index = radioGroup.indexOfChild(dialog.findViewById(radioGroup.getCheckedRadioButtonId()));
 						if (index == 0) {
-							System.out.println(specificSpinner.getSelectedItem().toString());
+							br.setAlarmByDay(context, specificSpinner.getSelectedItem().toString());
 						} else if (index == 3) {
-							System.out.println(weekSpinner.getSelectedItem().toString());
-							System.out.println(daySpinner.getSelectedItem().toString());
+							br.setAlarmByWeek(context, weekSpinner.getSelectedItem().toString(), daySpinner.getSelectedItem().toString());
 						}
-						
-						Toast.makeText(InfoActivity.this, "Order Date Changed", Toast.LENGTH_LONG).show();
 						dialog.dismiss();
 					}
 				});
@@ -100,8 +97,6 @@ public class InfoActivity extends ContainerActivity {
 						dialog.dismiss();
 					}
 				});
-				dialog.show();
-
 				dialog.show();
 			}
 		});

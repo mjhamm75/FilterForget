@@ -34,13 +34,13 @@
         </activity>
         <activity android:name="FilterSelectActivity"></activity>
         <activity android:name="FilterOrderActivity"></activity>
-        <receiver android:name="OrderAlarmBroadcastReceiver" >
+        <receiver android:name="FilterOrderBroadcastReceiver" >
             <intent-filter>
                 <action android:name="com.app.filterforget.NOTIFY" />
             </intent-filter>
         </receiver>
 
-        <receiver android:name="OrderAlarmBroadcastReceiver" />
+        <receiver android:name="FilterOrderBroadcastReceiver" />
     </application>
 
 </manifest>
