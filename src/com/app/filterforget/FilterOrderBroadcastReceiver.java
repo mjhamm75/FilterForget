@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 
 public class FilterOrderBroadcastReceiver extends BroadcastReceiver {
 
@@ -19,10 +20,14 @@ public class FilterOrderBroadcastReceiver extends BroadcastReceiver {
 
 	public void setAlarmByDay(Context context, String dayOfMonth) {
 		AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-		Intent intent = new Intent(context, FilterOrderBroadcastReceiver.class);		
+		Intent intent = new Intent(context, FilterOrderBroadcastReceiver.class);
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.SECOND, Integer.valueOf(dayOfMonth));
+		int today = calendar.get(Calendar.DAY_OF_MONTH);
+		if (today >= Integer.valueOf(dayOfMonth)) {
+			calendar.add(Calendar.MONTH, 1);
+		}
+		calendar.set(Calendar.DAY_OF_MONTH, Integer.valueOf(dayOfMonth));
 		am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
 	}
 
@@ -31,7 +36,11 @@ public class FilterOrderBroadcastReceiver extends BroadcastReceiver {
 		Intent intent = new Intent(context, FilterOrderBroadcastReceiver.class);
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.SECOND, Integer.valueOf(week));
+		calendar.set(Calendar.WEEK_OF_MONTH, Integer.valueOf(week));
+		calendar.set(Calendar.DAY_OF_WEEK, Integer.valueOf(day));
+		if (calendar.getTimeInMillis() - SystemClock.currentThreadTimeMillis() < 0) {
+			calendar.add(Calendar.MONTH, 1);
+		}
 		am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
 	}
 }
