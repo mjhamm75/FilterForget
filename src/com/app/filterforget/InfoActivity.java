@@ -84,7 +84,7 @@ public class InfoActivity extends ContainerActivity {
 						if (index == 0) {
 							br.setAlarmByDay(context, specificSpinner.getSelectedItem().toString());
 						} else if (index == 3) {
-							br.setAlarmByWeek(context, weekSpinner.getSelectedItem().toString(), daySpinner.getSelectedItem().toString());
+							br.setAlarmByWeek(context, weekSpinner.getSelectedItem().toString(), daySpinner.getSelectedItemPosition());
 						}
 						dialog.dismiss();
 					}
