@@ -2,9 +2,6 @@ package com.app.filterforget;
 
 import java.util.Calendar;
 
-import org.joda.time.DateTimeConstants;
-import org.joda.time.LocalDate;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -38,16 +35,11 @@ public class FilterOrderBroadcastReceiver extends BroadcastReceiver {
 		Intent intent = new Intent(context, FilterOrderBroadcastReceiver.class);
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 		Calendar calendar = Calendar.getInstance();
-		System.out.println(calendar.getTimeInMillis());
-		Calendar future = Calendar.getInstance();
-		future.set(Calendar.WEEK_OF_MONTH, 1);
-		future.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-		System.out.println(calendar.getTimeInMillis() - future.getTimeInMillis());
-		System.out.println(future.getTimeInMillis() - calendar.getTimeInMillis());
-		if(calendar.getTimeInMillis() - future.getTimeInMillis() < 0 ) {
-			future.add(Calendar.MONTH, 1);
-			System.out.println(future.getTimeInMillis() - calendar.getTimeInMillis());
+		calendar.set(Calendar.WEEK_OF_MONTH, 1);
+		calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+		if(Calendar.getInstance().getTimeInMillis() - calendar.getTimeInMillis() < 0 ) {
+			calendar.add(Calendar.MONTH, 1);
 		}
-		am.set(AlarmManager.RTC_WAKEUP, future.getTimeInMillis() - calendar.getTimeInMillis(), pi);
+		am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() - calendar.getTimeInMillis(), pi);
 	}
 }
