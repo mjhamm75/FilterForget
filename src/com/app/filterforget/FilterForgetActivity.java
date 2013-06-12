@@ -3,8 +3,12 @@ package com.app.filterforget;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TabHost;
+
+import com.app.filterforget.domain.DbData;
+import com.app.filterforget.domain.User;
 
 public class FilterForgetActivity extends TabActivity {
 
@@ -27,6 +31,11 @@ public class FilterForgetActivity extends TabActivity {
 		tabHost.addTab(spec);
 
 		tabHost.setCurrentTab(0);
+		
+		DbData dbData = new DbData(this);
+		Cursor cursor = dbData.getUser();
+		cursor.moveToFirst();
+		User.populateUserFromDb(cursor);
 	}
 
 }

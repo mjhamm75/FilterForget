@@ -41,6 +41,7 @@ public class DbData {
 	public static final String CREATE_TABLE_USER = String.format(
 			"Create table %s (%s integer primary key, %s text, %s text, %s text, %s text, %s text, %s text, %s text)",
 			TABLE_USER, U_ID, FIRST_NAME, LAST_NAME, ADDRESS_1, ADDRESS_2, CITY, STATE, ZIP);
+	public static final String CREATE_SINGLE_USER = "Insert into user values (1, \"\", \"\", \"\", \"\", \"\", \"\", \"\");";
 	public static final String CREATE_TABLE_CARDS = String.format(
 			"Create table %s (%s integer primary key, %s text, %s text, %s text)", TABLE_CREDIT_CARD, C_ID,
 			CARD_NUMBER, CARD_EXP_DATE, CARD_VERIFICATION_CODE);
@@ -56,8 +57,8 @@ public class DbData {
 	public DbData(Context context) {
 		this.context = context;
 		dbHelper = new DbHelper();
-		// db = dbHelper.getWritableDatabase();
-		// dbHelper.onUpgrade(db, 2, 3);
+//		db = dbHelper.getWritableDatabase();
+//		dbHelper.onUpgrade(db, 1, 2);
 	}
 
 	public void insertUser(User user) {
@@ -87,13 +88,13 @@ public class DbData {
 		values.put(CITY, user.getCity());
 		values.put(STATE, user.getState());
 		values.put(ZIP, user.getZipcode());
-
+		
 		db.update(TABLE_USER, values, BaseColumns._ID + "= 1", null);
 		db.close();
 	}
 
 	public Cursor getUser() {
-		db = dbHelper.getReadableDatabase();
+		db = dbHelper.getWritableDatabase();
 		Cursor cursor = db.query(TABLE_USER, null, null, null, null, null, U_ID + "= 1");
 		return cursor;
 	}
@@ -159,6 +160,7 @@ public class DbData {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL(CREATE_TABLE_USER);
+			db.execSQL(CREATE_SINGLE_USER);
 			db.execSQL(CREATE_TABLE_CARDS);
 			db.execSQL(CREATE_TABLE_FILTERS);
 		}
