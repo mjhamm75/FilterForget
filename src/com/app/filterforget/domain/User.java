@@ -85,5 +85,6 @@ public enum User {
 		User.USER.setCity(cursor.getString(cursor.getColumnIndex(DbData.CITY)));
 		User.USER.setState(cursor.getString(cursor.getColumnIndex(DbData.STATE)));
 		User.USER.setZipcode(cursor.getString(cursor.getColumnIndex(DbData.ZIP)));
+		
 	}
 }

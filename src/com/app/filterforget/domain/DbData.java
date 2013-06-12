@@ -74,7 +74,7 @@ public class DbData {
 		values.put(ZIP, user.getZipcode());
 
 		db.insert(TABLE_USER, null, values);
-		db.close();
+		closeDb();
 	}
 
 	public void updateUser(User user) {
@@ -90,7 +90,7 @@ public class DbData {
 		values.put(ZIP, user.getZipcode());
 		
 		db.update(TABLE_USER, values, BaseColumns._ID + "= 1", null);
-		db.close();
+		closeDb();
 	}
 
 	public Cursor getUser() {
@@ -112,13 +112,13 @@ public class DbData {
 		values.put(FILTER_LAST_REPLACED, filter.getLastReplaced());
 
 		db.insert(TABLE_FILTER, null, values);
-		db.close();
+		closeDb();
 	}
 
 	public void deleteFilter(long id) {
 		db = dbHelper.getWritableDatabase();
 		db.delete(TABLE_FILTER, F_ID + "=" + id, null);
-		db.close();
+		closeDb();
 	}
 
 	public Cursor getFilters() {
@@ -136,19 +136,23 @@ public class DbData {
 		values.put(CARD_VERIFICATION_CODE, creditCard.getCvc());
 
 		db.insert(TABLE_CREDIT_CARD, null, values);
-		db.close();
+		closeDb();
 	}
 
 	public void deleteCreditCard(CreditCard creditCard) {
 		db = dbHelper.getReadableDatabase();
 		db.delete(TABLE_CREDIT_CARD, C_ID + "=" + creditCard.getId(), null);
-		db.close();
+		closeDb();
 	}
 
 	public Cursor getCreditCards() {
 		db = dbHelper.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_CREDIT_CARD, null, null, null, null, null, null);
 		return cursor;
+	}
+	
+	public void closeDb() {
+		db.close();
 	}
 
 	class DbHelper extends SQLiteOpenHelper {
