@@ -36,7 +36,8 @@ public class FilterOrderBroadcastReceiver extends BroadcastReceiver {
 		PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.WEEK_OF_MONTH, 1);
-		calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+		calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+		Calendar now = Calendar.getInstance();
 		if(Calendar.getInstance().getTimeInMillis() - calendar.getTimeInMillis() < 0 ) {
 			calendar.add(Calendar.MONTH, 1);
 		}

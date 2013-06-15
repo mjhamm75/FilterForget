@@ -64,15 +64,15 @@ public class InfoActivity extends ContainerActivity {
 					}
 				});
 
-				RadioButton repeatDate = (RadioButton) dialog.findViewById(R.id.radio_repeat_date);
-				repeatDate.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						specificSpinner.setEnabled(false);
-						weekSpinner.setEnabled(true);
-						daySpinner.setEnabled(true);
-					}
-				});
+//				RadioButton repeatDate = (RadioButton) dialog.findViewById(R.id.radio_repeat_date);
+//				repeatDate.setOnClickListener(new View.OnClickListener() {
+//					@Override
+//					public void onClick(View v) {
+//						specificSpinner.setEnabled(false);
+//						weekSpinner.setEnabled(true);
+//						daySpinner.setEnabled(true);
+//					}
+//				});
 				
 
 				Button addOrderDate = (Button) dialog.findViewById(R.id.buttonAddDate);
