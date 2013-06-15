@@ -36,6 +36,7 @@ public class FilterForgetActivity extends TabActivity {
 		Cursor cursor = dbData.getUser();
 		cursor.moveToFirst();
 		User.populateUserFromDb(cursor);
+		dbData.closeDb();
 	}
 
 }
